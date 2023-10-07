@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class SignInViewController: UIViewController, SignInViewModelDelegate {
+class SignInViewController: UIViewController {
     
     let email: UITextField = {
         let ed = UITextField()
@@ -76,15 +76,33 @@ class SignInViewController: UIViewController, SignInViewModelDelegate {
         
         
     }
-    
-    // Envia para a viewModel uma notificação
+    // 2. eventos de touch ( Envia para a viewModel uma notificação
     @objc func sendDidTap() {
         viewModel?.send()
     }
-    
-    // OBSERVADOR (0.0) - novos dados chegou
-    func viewModelDidChanged(state: SignInState) {
-        print("O viewModel notificou com o state: \(state)")
-    }
 }
- 
+
+
+// 3. Observers
+extension SignInViewController: SignInViewModelDelegate {
+    // novos dados chegou
+    func viewModelDidChanged(state: SignInState) {
+        switch(state) {
+        case .none:
+            break
+        case .loading:
+            // mostrar a progress
+            break
+        case .goToHome:
+            // navegar para a tela princiapl
+            break
+        case .error(let msg):
+            let alert = UIAlertController(title: "Titulo", message: msg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+            
+            break
+        }
+    }
+    
+}
