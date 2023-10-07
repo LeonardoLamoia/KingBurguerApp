@@ -77,12 +77,14 @@ class SignInViewController: UIViewController, SignInViewModelDelegate {
         
     }
     
-    
+    // Envia para a viewModel uma notificação
     @objc func sendDidTap() {
         viewModel?.send()
     }
     
-    func viewModelDidChanged(viewModel: SignInViewModel) {
-        print("O viewModel notificou a ViewController")
+    // OBSERVADOR (0.0) - novos dados chegou
+    func viewModelDidChanged(state: SignInState) {
+        print("O viewModel notificou com o state: \(state)")
     }
 }
+ 

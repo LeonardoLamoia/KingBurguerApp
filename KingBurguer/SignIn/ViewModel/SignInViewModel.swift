@@ -10,20 +10,26 @@ import UIKit
 
 
 protocol SignInViewModelDelegate {
-    func viewModelDidChanged(viewModel: SignInViewModel)
+    func viewModelDidChanged(state: SignInState)
 }
 
 class SignInViewModel {
     
     var delegate: SignInViewModelDelegate?
     
-    var state: Bool = false {
+    // Notificou  para quem estava observando ele, que o estado mudou
+    var state: SignInState = .none {
         didSet {
-            delegate?.viewModelDidChanged(viewModel: self)
+            delegate?.viewModelDidChanged(state: state)
         }
     }
-    
+    // Informa: mudou o estado
     func send() {
-        state = true
+        state = .loading
+        
+        // código de delay, (esperar 2 segundos) - simulando uma latencia de rede
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.state = .error("Usuario não existe")
+        }
     }
 }

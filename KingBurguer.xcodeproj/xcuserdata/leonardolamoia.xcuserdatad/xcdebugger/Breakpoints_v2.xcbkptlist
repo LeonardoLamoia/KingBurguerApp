@@ -14,10 +14,42 @@
             filePath = "KingBurguer/SignIn/View/SignInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "viewModelDidChanged(viewModel:)"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "viewModelDidChanged(state:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F951E9CD-6989-4D77-999C-51315F7D67A1 - 1b58b54ef3d86c56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KingBurguer.SignInViewController.viewModelDidChanged(state: KingBurguer.SignInState) -&gt; ()"
+                  moduleName = "KingBurguer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardolamoia/MeusProjetos/Swift/KingBurguer/KingBurguer/SignIn/View/SignInViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "F951E9CD-6989-4D77-999C-51315F7D67A1 - 1b58b54ef3d86c56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KingBurguer.SignInViewController.viewModelDidChanged(state: KingBurguer.SignInState) -&gt; ()"
+                  moduleName = "KingBurguer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardolamoia/MeusProjetos/Swift/KingBurguer/KingBurguer/SignIn/View/SignInViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -78,10 +110,42 @@
             filePath = "KingBurguer/SignIn/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "send()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6C1CC933-CA70-47E3-8E4E-4447F4C1A98F - 9a856f021170b86a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KingBurguer.SignInViewModel.send() -&gt; ()"
+                  moduleName = "KingBurguer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardolamoia/MeusProjetos/Swift/KingBurguer/KingBurguer/SignIn/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "6C1CC933-CA70-47E3-8E4E-4447F4C1A98F - 9a856f021170b86a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KingBurguer.SignInViewModel.send() -&gt; ()"
+                  moduleName = "KingBurguer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardolamoia/MeusProjetos/Swift/KingBurguer/KingBurguer/SignIn/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "236">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,10 +158,90 @@
             filePath = "KingBurguer/SignIn/ViewModel/SignInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "state"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "B2DDE248-E398-4A4D-A589-79FCF550798D - ca5c41989c9b0ea4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KingBurguer.SignInViewModel.state.didset : KingBurguer.SignInState"
+                  moduleName = "KingBurguer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardolamoia/MeusProjetos/Swift/KingBurguer/KingBurguer/SignIn/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  uuid = "B2DDE248-E398-4A4D-A589-79FCF550798D - ca5c41989c9b0ea4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KingBurguer.SignInViewModel.state.didset : KingBurguer.SignInState"
+                  moduleName = "KingBurguer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardolamoia/MeusProjetos/Swift/KingBurguer/KingBurguer/SignIn/ViewModel/SignInViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65EAB5CE-0E77-4FE1-AC5E-68F5F2AE2D2F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KingBurguer/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "scene(_:willConnectTo:options:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D30CAF28-7486-4863-9A21-96313F98D1E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KingBurguer/SceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "scene(_:willConnectTo:options:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7F4B5E11-58C7-4A4C-8CCD-4180134FBB56"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KingBurguer/SignIn/ViewModel/SignInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "send()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
