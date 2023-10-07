@@ -13,6 +13,8 @@
 		1B6AFAC82ACDBF3A00B8504D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC72ACDBF3A00B8504D /* Assets.xcassets */; };
 		1B6AFACB2ACDBF3A00B8504D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC92ACDBF3A00B8504D /* LaunchScreen.storyboard */; };
 		1B6AFAD52ACDCAF400B8504D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAD42ACDCAF400B8504D /* SignInViewController.swift */; };
+		1BCB8A102AD074E4009A4AB8 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB8A0F2AD074E4009A4AB8 /* SignInViewModel.swift */; };
+		1BCB8A122AD14FBF009A4AB8 /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB8A112AD14FBF009A4AB8 /* SignInState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		1B6AFACA2ACDBF3A00B8504D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B6AFACC2ACDBF3A00B8504D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B6AFAD42ACDCAF400B8504D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		1BCB8A0F2AD074E4009A4AB8 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		1BCB8A112AD14FBF009A4AB8 /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 		1B6AFAD22ACDCA9E00B8504D /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				1BCB8A0E2AD074C4009A4AB8 /* ViewModel */,
 				1B6AFAD32ACDCAAF00B8504D /* View */,
 			);
 			path = SignIn;
@@ -81,6 +86,15 @@
 				1B6AFAD42ACDCAF400B8504D /* SignInViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1BCB8A0E2AD074C4009A4AB8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1BCB8A0F2AD074E4009A4AB8 /* SignInViewModel.swift */,
+				1BCB8A112AD14FBF009A4AB8 /* SignInState.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,7 +170,9 @@
 				1B6AFAD52ACDCAF400B8504D /* SignInViewController.swift in Sources */,
 				1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */,
 				1B6AFABF2ACDBF3800B8504D /* AppDelegate.swift in Sources */,
+				1BCB8A122AD14FBF009A4AB8 /* SignInState.swift in Sources */,
 				1B6AFAC12ACDBF3800B8504D /* SceneDelegate.swift in Sources */,
+				1BCB8A102AD074E4009A4AB8 /* SignInViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
