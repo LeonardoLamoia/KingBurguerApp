@@ -16,6 +16,7 @@ protocol SignInViewModelDelegate {
 class SignInViewModel {
     
     var delegate: SignInViewModelDelegate?
+    var coordinator: SignInCoordinator?
     
     // Notificou  para quem estava observando ele, que o estado mudou
     var state: SignInState = .none {
@@ -31,5 +32,9 @@ class SignInViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.state = .error("Usuario não existe")
         }
+    }
+    
+    func goToSignUp() {
+        coordinator?.signUp()
     }
 }

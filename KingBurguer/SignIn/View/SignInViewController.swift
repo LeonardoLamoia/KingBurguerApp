@@ -37,6 +37,16 @@ class SignInViewController: UIViewController {
         return btn
     }()
     
+    lazy var register: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Criar Conta", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.backgroundColor = .purple
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
+        return btn
+    }()
+    
     var viewModel:SignInViewModel? {
         didSet {
             viewModel?.delegate = self
@@ -45,11 +55,14 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .systemBackground
+        
+        navigationItem.title = "Login"
         
         view.addSubview(email)
         view.addSubview(password)
         view.addSubview(send)
+        view.addSubview(register)
         configConstraints()
         
     }
@@ -70,7 +83,13 @@ class SignInViewController: UIViewController {
             send.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             send.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
-            send.heightAnchor.constraint(equalToConstant: 50.0)
+            send.heightAnchor.constraint(equalToConstant: 50.0),
+            
+            
+            register.leadingAnchor.constraint(equalTo: email.leadingAnchor),
+            register.trailingAnchor.constraint(equalTo: email.trailingAnchor),
+            register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 15.0),
+            register.heightAnchor.constraint(equalToConstant: 50.0)
             
         ])
         
@@ -79,6 +98,10 @@ class SignInViewController: UIViewController {
     // 2. eventos de touch ( Envia para a viewModel uma notificação
     @objc func sendDidTap() {
         viewModel?.send()
+    }
+    
+    @objc func registerDidTap() {
+        viewModel?.goToSignUp()
     }
 }
 
