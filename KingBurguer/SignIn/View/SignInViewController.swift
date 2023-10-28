@@ -53,18 +53,23 @@ class SignInViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
         navigationItem.title = "Login"
         
+        addElements()
+        configConstraints()
+        
+    }
+    
+    private func addElements() {
         view.addSubview(email)
         view.addSubview(password)
         view.addSubview(send)
         view.addSubview(register)
-        configConstraints()
-        
     }
     
     private func configConstraints() {

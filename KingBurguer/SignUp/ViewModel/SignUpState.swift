@@ -1,17 +1,17 @@
 //
-//  SignInState.swift
+//  SignUpState.swift
 //  KingBurguer
 //
-//  Created by Leonardo Lamoia on 07/10/23.
+//  Created by Leonardo Lamoia on 28/10/23.
 //
 
 import Foundation
+import UIKit
 
 
-enum SignInState {
+enum SignUpState {
     case none
     case loading
     case goToHome
     case error(String)
 }
-

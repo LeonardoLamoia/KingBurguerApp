@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617DB2AED7C0F006F4710 /* SignUpViewModel.swift */; };
+		1B3617DE2AED7CA3006F4710 /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617DD2AED7CA3006F4710 /* SignUpState.swift */; };
 		1B6AFABF2ACDBF3800B8504D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */; };
 		1B6AFAC12ACDBF3800B8504D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */; };
 		1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC22ACDBF3800B8504D /* ViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B3617DB2AED7C0F006F4710 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		1B3617DD2AED7CA3006F4710 /* SignUpState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		1B6AFABB2ACDBF3800B8504D /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 		1BCB8A152AD15E03009A4AB8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1B3617DB2AED7C0F006F4710 /* SignUpViewModel.swift */,
+				1B3617DD2AED7CA3006F4710 /* SignUpState.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -202,12 +208,14 @@
 			files = (
 				1B9688DD2AD1D7FA00C84086 /* SingUpCoordinator.swift in Sources */,
 				1B6AFAD52ACDCAF400B8504D /* SignInViewController.swift in Sources */,
+				1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */,
 				1BCB8A172AD15E4D009A4AB8 /* SignUpViewController.swift in Sources */,
 				1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */,
 				1B6AFABF2ACDBF3800B8504D /* AppDelegate.swift in Sources */,
 				1BCB8A122AD14FBF009A4AB8 /* SignInState.swift in Sources */,
 				1B6AFAC12ACDBF3800B8504D /* SceneDelegate.swift in Sources */,
 				1B9688DB2AD1D0E100C84086 /* SignInCoordinator.swift in Sources */,
+				1B3617DE2AED7CA3006F4710 /* SignUpState.swift in Sources */,
 				1BCB8A102AD074E4009A4AB8 /* SignInViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
