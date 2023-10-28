@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617DB2AED7C0F006F4710 /* SignUpViewModel.swift */; };
 		1B3617DE2AED7CA3006F4710 /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617DD2AED7CA3006F4710 /* SignUpState.swift */; };
+		1B3617E12AED8D1B006F4710 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617E02AED8D1B006F4710 /* HomeCoordinator.swift */; };
+		1B3617E42AED8D5D006F4710 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617E32AED8D5D006F4710 /* HomeViewController.swift */; };
+		1B3617E92AED98BB006F4710 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617E82AED98BB006F4710 /* HomeViewModel.swift */; };
 		1B6AFABF2ACDBF3800B8504D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */; };
 		1B6AFAC12ACDBF3800B8504D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */; };
 		1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC22ACDBF3800B8504D /* ViewController.swift */; };
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		1B3617DB2AED7C0F006F4710 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		1B3617DD2AED7CA3006F4710 /* SignUpState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
+		1B3617E02AED8D1B006F4710 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		1B3617E32AED8D5D006F4710 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1B3617E82AED98BB006F4710 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1B6AFABB2ACDBF3800B8504D /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B3617DF2AED8CE6006F4710 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1B3617E72AED9891006F4710 /* ViewModel */,
+				1B3617E22AED8D3E006F4710 /* View */,
+				1B3617E02AED8D1B006F4710 /* HomeCoordinator.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1B3617E22AED8D3E006F4710 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1B3617E32AED8D5D006F4710 /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1B3617E72AED9891006F4710 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1B3617E82AED98BB006F4710 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		1B6AFAB22ACDBF3800B8504D = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +102,7 @@
 		1B6AFABD2ACDBF3800B8504D /* KingBurguer */ = {
 			isa = PBXGroup;
 			children = (
+				1B3617DF2AED8CE6006F4710 /* Home */,
 				1BCB8A132AD15DE8009A4AB8 /* SignUp */,
 				1B6AFAD22ACDCA9E00B8504D /* SignIn */,
 				1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */,
@@ -211,11 +244,14 @@
 				1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */,
 				1BCB8A172AD15E4D009A4AB8 /* SignUpViewController.swift in Sources */,
 				1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */,
+				1B3617E12AED8D1B006F4710 /* HomeCoordinator.swift in Sources */,
 				1B6AFABF2ACDBF3800B8504D /* AppDelegate.swift in Sources */,
 				1BCB8A122AD14FBF009A4AB8 /* SignInState.swift in Sources */,
 				1B6AFAC12ACDBF3800B8504D /* SceneDelegate.swift in Sources */,
+				1B3617E92AED98BB006F4710 /* HomeViewModel.swift in Sources */,
 				1B9688DB2AD1D0E100C84086 /* SignInCoordinator.swift in Sources */,
 				1B3617DE2AED7CA3006F4710 /* SignUpState.swift in Sources */,
+				1B3617E42AED8D5D006F4710 /* HomeViewController.swift in Sources */,
 				1BCB8A102AD074E4009A4AB8 /* SignInViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
