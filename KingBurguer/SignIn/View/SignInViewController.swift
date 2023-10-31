@@ -11,6 +11,19 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
+    let scroll: UIScrollView = {
+        let sc = UIScrollView()
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        return sc
+    }()
+    
+    let container: UIView = {
+        let v = UIView()
+        v.backgroundColor = .red
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
+    
     lazy var email: UITextField = {
         let ed = UITextField()
         ed.backgroundColor = .blue
@@ -66,20 +79,48 @@ class SignInViewController: UIViewController {
         addElements()
         configConstraints()
         
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyBoardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     private func addElements() {
-        view.addSubview(email)
-        view.addSubview(password)
-        view.addSubview(send)
-        view.addSubview(register)
+        view.addSubview(scroll)
+        scroll.addSubview(container)
+        container.addSubview(email)
+        container.addSubview(password)
+        container.addSubview(send)
+        container.addSubview(register)
+        container.addSubview(send)
     }
     
+    
+    
     private func configConstraints() {
+        let heightConstraint = container.heightAnchor.constraint(equalTo: view.heightAnchor)
+        heightConstraint.priority = .defaultLow
+        heightConstraint.isActive = true
+        
         NSLayoutConstraint.activate([
-            email.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            email.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            email.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
+            
+            
+            scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scroll.topAnchor.constraint(equalTo: view.topAnchor),
+            scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            container.widthAnchor.constraint(equalTo: view.widthAnchor),
+            container.topAnchor.constraint(equalTo: scroll.topAnchor),
+            container.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+            
+            
+            email.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            email.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -100),
             email.heightAnchor.constraint(equalToConstant: 50.00),
             
             
@@ -93,15 +134,37 @@ class SignInViewController: UIViewController {
             send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
             send.heightAnchor.constraint(equalToConstant: 50.0),
             
-            
             register.leadingAnchor.constraint(equalTo: email.leadingAnchor),
             register.trailingAnchor.constraint(equalTo: email.trailingAnchor),
             register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 15.0),
-            register.heightAnchor.constraint(equalToConstant: 50.0)
+            register.heightAnchor.constraint(equalToConstant: 50.0),
+            
+            
             
         ])
         
+    }
+    
+    
+    @objc func onKeyBoardNotification(_ notification: Notification) {
+        let visible = notification.name == UIResponder.keyboardWillShowNotification
         
+        let keyboardFrame = visible ? UIResponder.keyboardFrameEndUserInfoKey : UIResponder.keyboardFrameBeginUserInfoKey
+        
+        if let keyboardSize = (notification.userInfo?[keyboardFrame] as? NSValue)?.cgRectValue {
+            onKeyboardChanged(visible, height: keyboardSize.height)
+        }
+    }
+    
+    func onKeyboardChanged(_ visible: Bool, height: CGFloat) {
+        if (!visible) {
+            scroll.contentInset = .zero
+            scroll.scrollIndicatorInsets = .zero
+        } else {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: height, right: 0.0)
+            scroll.contentInset = contentInsets
+            scroll.scrollIndicatorInsets = contentInsets
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
