@@ -53,7 +53,6 @@ class SignInViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -100,6 +99,17 @@ class SignInViewController: UIViewController {
         
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(_ view: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
     // 2. eventos de touch ( Envia para a viewModel uma notificação
     @objc func sendDidTap() {
         viewModel?.send()
