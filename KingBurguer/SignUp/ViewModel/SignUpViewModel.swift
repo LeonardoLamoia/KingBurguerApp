@@ -34,4 +34,8 @@ class SignUpViewModel {
         }
     }
     
+    func goToHome() {
+        coordinator?.home()
+    }
+    
 }

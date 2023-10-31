@@ -38,6 +38,7 @@ class SignInCoordinator {
     
     func signUp() {
         let signUpCoordinator = SignUpCoordinator(navigationController: navigationController)
+        signUpCoordinator.parentCoordinator = self
         signUpCoordinator.start()
     }
     
