@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
     
     let container: UIView = {
         let v = UIView()
-        v.backgroundColor = .red
+        v.backgroundColor = .purple
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -87,13 +87,14 @@ class SignInViewController: UIViewController {
     }
     
     private func addElements() {
-        view.addSubview(scroll)
-        scroll.addSubview(container)
         container.addSubview(email)
         container.addSubview(password)
         container.addSubview(send)
         container.addSubview(register)
         container.addSubview(send)
+        
+        scroll.addSubview(container)
+        view.addSubview(scroll)
     }
     
     
@@ -120,7 +121,7 @@ class SignInViewController: UIViewController {
             
             email.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             email.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -100),
+            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150),
             email.heightAnchor.constraint(equalToConstant: 50.00),
             
             
@@ -129,8 +130,8 @@ class SignInViewController: UIViewController {
             password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10.0),
             password.heightAnchor.constraint(equalToConstant: 50.0),
             
-            send.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            send.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            send.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            send.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
             send.heightAnchor.constraint(equalToConstant: 50.0),
             
