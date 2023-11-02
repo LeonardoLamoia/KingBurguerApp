@@ -19,14 +19,13 @@ class SignInViewController: UIViewController {
     
     let container: UIView = {
         let v = UIView()
-        v.backgroundColor = .purple
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
     lazy var email: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .blue
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu e-mail"
         ed.returnKeyType = .next
         ed.delegate = self
@@ -36,7 +35,7 @@ class SignInViewController: UIViewController {
     
     lazy var password: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .red
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua senha"
         ed.returnKeyType = .done
         ed.delegate = self
@@ -44,21 +43,20 @@ class SignInViewController: UIViewController {
         return ed
     }()
     
-    lazy var send: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Entrar", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = .yellow
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.addTarget(self, action: #selector(sendDidTap), for: .touchUpInside)
+    lazy var send: LoadingButton = {
+        let btn = LoadingButton()
+        btn.title = "Entrar"
+        btn.titleColor = .white
+        btn.backgroundColor = .red
+        btn.addTarget(self, action: #selector(sendDidTap))
         return btn
     }()
     
     lazy var register: UIButton = {
         let btn = UIButton()
         btn.setTitle("Criar Conta", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = .purple
+        btn.setTitleColor(.black, for: .normal)
+//        btn.backgroundColor = .red
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
         return btn
@@ -76,7 +74,7 @@ class SignInViewController: UIViewController {
         
         navigationItem.title = "Login"
         
-        addElements()
+        setupViews()
         configConstraints()
         
         
@@ -86,7 +84,7 @@ class SignInViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
-    private func addElements() {
+    private func setupViews() {
         container.addSubview(email)
         container.addSubview(password)
         container.addSubview(send)
@@ -118,6 +116,7 @@ class SignInViewController: UIViewController {
             container.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
             container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
             
+            container.heightAnchor.constraint(equalToConstant: 490),
             
             email.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             email.trailingAnchor.constraint(equalTo: container.trailingAnchor),
@@ -209,7 +208,7 @@ extension SignInViewController: SignInViewModelDelegate {
         case .none:
             break
         case .loading:
-            // mostrar a progress
+            send.startLoading(true)
             break
         case .goToHome:
             // navegar para a tela princiapl

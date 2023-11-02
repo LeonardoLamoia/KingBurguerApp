@@ -13,7 +13,7 @@ class SignUpViewController: UIViewController {
     
     let name: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu nome"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
     
     let email: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu e-mail"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController {
     
     let password: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua senha"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
@@ -37,7 +37,7 @@ class SignUpViewController: UIViewController {
     
     let document: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu CPF"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
@@ -45,19 +45,19 @@ class SignUpViewController: UIViewController {
     
     let birthday: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua data de nascimento"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    lazy var send: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Entrar", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = .yellow
+    lazy var send: LoadingButton = {
+        let btn = LoadingButton()
+        btn.title = "Entrar"
+        btn.titleColor = .white
+        btn.backgroundColor = .red
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.addTarget(self, action: #selector(sedDidTap), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(sedDidTap))
         return btn
     }()
     
