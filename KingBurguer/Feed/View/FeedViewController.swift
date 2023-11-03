@@ -16,7 +16,7 @@ class FeedViewController: UIViewController {
     private let homeFeedTable: UITableView = {
         let tv = UITableView()
         
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tv.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
         tv.backgroundColor = UIColor.cyan
         
         return tv
@@ -46,7 +46,7 @@ extension FeedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as! FeedTableViewCell
         
         cell.textLabel?.text = "Opa bebê \(indexPath.row)"
         
