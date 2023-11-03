@@ -55,7 +55,7 @@ class SignInViewController: UIViewController {
     lazy var register: UIButton = {
         let btn = UIButton()
         btn.setTitle("Criar Conta", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        btn.setTitleColor(.label, for: .normal)
 //        btn.backgroundColor = .red
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
