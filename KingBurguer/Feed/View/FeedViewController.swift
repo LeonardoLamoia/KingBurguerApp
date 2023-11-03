@@ -29,6 +29,10 @@ class FeedViewController: UIViewController {
         
         view.addSubview(homeFeedTable)
         
+        let headerView = HighlightView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        headerView.backgroundColor = .orange
+        homeFeedTable.tableHeaderView = headerView
+        
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
     }
