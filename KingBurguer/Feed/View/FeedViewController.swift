@@ -17,7 +17,7 @@ class FeedViewController: UIViewController {
         let tv = UITableView(frame: .zero, style: .grouped)
         
         tv.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
-        tv.backgroundColor = UIColor.cyan
+        tv.backgroundColor = UIColor.systemBackground
         
         return tv
     }()
@@ -35,11 +35,34 @@ class FeedViewController: UIViewController {
         
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
+        
+        configureNavBar()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
+    }
+    
+    
+    private func configureNavBar() {
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.tintColor = UIColor.red
+        
+        navigationItem.title = "Produtos"
+        var image = UIImage(named: "icon")
+       image = image?.withRenderingMode(.alwaysOriginal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
+        
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(systemName: "power"), style: .done, target: self, action: #selector(testDidTap)),
+            UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil)
+        ]
+    }
+    
+    @objc func testDidTap(_ sender: UIBarButtonItem) {
+        print("clicou")
     }
 
 }

@@ -9,19 +9,16 @@ import UIKit
 
 class HomeCoordinator {
     
-    private let navigationController: UINavigationController
-    
     private let window: UIWindow?
     
     init(window: UIWindow?) {
         self.window = window
-        self.navigationController = UINavigationController()
     }
     
     func start() {
         let homeVC = HomeViewController()
-        navigationController.pushViewController(homeVC, animated: true)
         
-        window?.rootViewController = navigationController
+        // aqui é onde acontece a trocar de navigation-controller
+        window?.rootViewController = homeVC
     }
 }
