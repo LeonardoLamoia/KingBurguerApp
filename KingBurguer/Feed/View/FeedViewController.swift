@@ -13,6 +13,8 @@ class FeedViewController: UIViewController {
     // 2 . definir o dataSource (ViewController - que administra fonte de dados)
     // 3 . definir métodos obrigatórios ( numberOfRowsInSection / cellForRowAt )
     
+    let sections = ["Mais Vendidos", "Vegano", "Bovino", "Sobremesas"]
+    
     private let homeFeedTable: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
         
@@ -22,7 +24,7 @@ class FeedViewController: UIViewController {
         return tv
     }()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -52,7 +54,7 @@ class FeedViewController: UIViewController {
         
         navigationItem.title = "Produtos"
         var image = UIImage(named: "icon")
-       image = image?.withRenderingMode(.alwaysOriginal)
+        image = image?.withRenderingMode(.alwaysOriginal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
         
         navigationItem.rightBarButtonItems = [
@@ -64,14 +66,14 @@ class FeedViewController: UIViewController {
     @objc func testDidTap(_ sender: UIBarButtonItem) {
         print("clicou")
     }
-
+    
 }
 
 
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 20
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,6 +83,25 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 40))
+        
+        let label = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.bounds.width, height: 40))
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = .label
+        label.text = sections[section].uppercased()
+        
+        view.addSubview(label)
+        
+        return view
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as! FeedTableViewCell
