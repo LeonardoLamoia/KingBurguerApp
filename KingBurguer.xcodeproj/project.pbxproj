@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B2B72EB2AF80EB500A16D9B /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B72EA2AF80EB500A16D9B /* FeedCollectionViewCell.swift */; };
 		1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617DB2AED7C0F006F4710 /* SignUpViewModel.swift */; };
 		1B3617DE2AED7CA3006F4710 /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617DD2AED7CA3006F4710 /* SignUpState.swift */; };
 		1B3617E12AED8D1B006F4710 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617E02AED8D1B006F4710 /* HomeCoordinator.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B2B72EA2AF80EB500A16D9B /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B3617DB2AED7C0F006F4710 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		1B3617DD2AED7CA3006F4710 /* SignUpState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		1B3617E02AED8D1B006F4710 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				1B7DEAC22AF558C7004A5213 /* FeedViewController.swift */,
 				1B7DEAC82AF57213004A5213 /* FeedTableViewCell.swift */,
 				1B7DEACA2AF586D7004A5213 /* HighlightView.swift */,
+				1B2B72EA2AF80EB500A16D9B /* FeedCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				1B7DEAC92AF57213004A5213 /* FeedTableViewCell.swift in Sources */,
 				1B7DEAC72AF558FD004A5213 /* CouponViewController.swift in Sources */,
 				1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */,
+				1B2B72EB2AF80EB500A16D9B /* FeedCollectionViewCell.swift in Sources */,
 				1BCB8A172AD15E4D009A4AB8 /* SignUpViewController.swift in Sources */,
 				1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */,
 				1B3617E12AED8D1B006F4710 /* HomeCoordinator.swift in Sources */,
