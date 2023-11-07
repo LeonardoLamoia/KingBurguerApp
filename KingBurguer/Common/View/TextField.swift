@@ -41,6 +41,14 @@ class TextField: UIView {
         }
     }
     
+    var secureTextEntry: Bool = false {
+        willSet {
+            ed.isSecureTextEntry = newValue
+            ed.textContentType = .oneTimeCode
+        }
+    }
+    
+    
     var delegate: UITextFieldDelegate? {
         willSet {
             ed.delegate = newValue
