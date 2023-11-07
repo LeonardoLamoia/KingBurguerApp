@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B2B72EB2AF80EB500A16D9B /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B72EA2AF80EB500A16D9B /* FeedCollectionViewCell.swift */; };
+		1B2B72ED2AF8131B00A16D9B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B72EC2AF8131B00A16D9B /* TextField.swift */; };
 		1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617DB2AED7C0F006F4710 /* SignUpViewModel.swift */; };
 		1B3617DE2AED7CA3006F4710 /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617DD2AED7CA3006F4710 /* SignUpState.swift */; };
 		1B3617E12AED8D1B006F4710 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3617E02AED8D1B006F4710 /* HomeCoordinator.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		1B2B72EA2AF80EB500A16D9B /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		1B2B72EC2AF8131B00A16D9B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1B3617DB2AED7C0F006F4710 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		1B3617DD2AED7CA3006F4710 /* SignUpState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		1B3617E02AED8D1B006F4710 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				1B3617EC2AF16544006F4710 /* LoadingButton.swift */,
+				1B2B72EC2AF8131B00A16D9B /* TextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B9688DD2AD1D7FA00C84086 /* SingUpCoordinator.swift in Sources */,
+				1B2B72ED2AF8131B00A16D9B /* TextField.swift in Sources */,
 				1B6AFAD52ACDCAF400B8504D /* SignInViewController.swift in Sources */,
 				1B7DEAC92AF57213004A5213 /* FeedTableViewCell.swift in Sources */,
 				1B7DEAC72AF558FD004A5213 /* CouponViewController.swift in Sources */,

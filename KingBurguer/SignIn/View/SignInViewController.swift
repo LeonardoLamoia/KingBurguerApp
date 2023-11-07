@@ -23,15 +23,28 @@ class SignInViewController: UIViewController {
         return v
     }()
     
-    lazy var email: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
+    lazy var email: TextField = {
+        let ed = TextField()
+//        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu e-mail"
         ed.returnKeyType = .next
-        ed.delegate = self
-        ed.translatesAutoresizingMaskIntoConstraints = false
+        ed.error = "E-mail invalido"
+        // forma "tradicional"
+        // ed.failure = validation
+        
+        // Forma enxuta/encurtada de prog. funcional
+        ed.failure = {
+            return self.email.text.count <= 10
+        }
+//        ed.delegate = self
+//        ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
+    
+    // forma "tradicional"
+    func validation() -> Bool {
+        return email.text.count <= 3
+    }
     
     lazy var password: UITextField = {
         let ed = UITextField()
@@ -121,7 +134,6 @@ class SignInViewController: UIViewController {
             email.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             email.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150),
-            email.heightAnchor.constraint(equalToConstant: 50.00),
             
             
             password.leadingAnchor.constraint(equalTo: email.leadingAnchor),
