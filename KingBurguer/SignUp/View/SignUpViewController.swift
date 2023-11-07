@@ -23,58 +23,69 @@ class SignUpViewController: UIViewController {
         return v
     }()
     
-    lazy var name: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
+    lazy var name: TextField = {
+        let ed = TextField()
         ed.placeholder = "Entre com seu nome"
         ed.tag = 1
         ed.returnKeyType = .next
         ed.delegate = self
-        ed.translatesAutoresizingMaskIntoConstraints = false
+        ed.error = "Nome deve ter no minimo 8 caracteres"
+        ed.failure = {
+            return ed.text.count <= 3
+        }
         return ed
     }()
     
-    lazy var email: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
+    lazy var email: TextField = {
+        let ed = TextField()
         ed.placeholder = "Entre com seu e-mail"
         ed.tag = 2
         ed.returnKeyType = .next
         ed.delegate = self
-        ed.translatesAutoresizingMaskIntoConstraints = false
+        ed.error = "E-mail invalido"
+        ed.failure = {
+            return ed.text.count <= 3
+        }
         return ed
     }()
     
-    lazy var password: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
+    lazy var password: TextField = {
+        let ed = TextField()
         ed.placeholder = "Entre com sua senha"
         ed.tag = 3
         ed.returnKeyType = .next
         ed.delegate = self
-        ed.translatesAutoresizingMaskIntoConstraints = false
+        ed.error = "Senha deve ter no minimo 8 caracteres"
+        ed.failure = {
+            return ed.text.count <= 8
+        }
         return ed
     }()
     
-    lazy var document: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
+    lazy var document: TextField = {
+        let ed = TextField()
+        
         ed.placeholder = "Entre com seu CPF"
         ed.tag = 4
         ed.returnKeyType = .next
         ed.delegate = self
-        ed.translatesAutoresizingMaskIntoConstraints = false
+        ed.error = "CPF deve ter no minimo 11 digitos"
+        ed.failure = {
+            return ed.text.count != 14
+        }
         return ed
     }()
     
-    lazy var birthday: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
+    lazy var birthday: TextField = {
+        let ed = TextField()
         ed.placeholder = "Entre com sua data de nascimento"
         ed.tag = 5
         ed.returnKeyType = .done
         ed.delegate = self
-        ed.translatesAutoresizingMaskIntoConstraints = false
+        ed.error = "Data de nascimento deve ser dd/MM/yyyy"
+        ed.failure = {
+            return ed.text.count != 10
+        }
         return ed
     }()
     
@@ -140,34 +151,29 @@ class SignUpViewController: UIViewController {
             container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
             
             
-            name.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            name.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            name.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            name.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             name.topAnchor.constraint(equalTo: container.topAnchor, constant: 70.0),
-            name.heightAnchor.constraint(equalToConstant: 50.00),
             
             
             email.leadingAnchor.constraint(equalTo: name.leadingAnchor),
             email.trailingAnchor.constraint(equalTo: name.trailingAnchor),
             email.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 10.0),
-            email.heightAnchor.constraint(equalToConstant: 50.0),
             
             
             password.leadingAnchor.constraint(equalTo: name.leadingAnchor),
             password.trailingAnchor.constraint(equalTo: name.trailingAnchor),
             password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10.0),
-            password.heightAnchor.constraint(equalToConstant: 50.0),
             
             
             document.leadingAnchor.constraint(equalTo: name.leadingAnchor),
             document.trailingAnchor.constraint(equalTo: name.trailingAnchor),
             document.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
-            document.heightAnchor.constraint(equalToConstant: 50.0),
             
             
             birthday.leadingAnchor.constraint(equalTo: name.leadingAnchor),
             birthday.trailingAnchor.constraint(equalTo: name.trailingAnchor),
             birthday.topAnchor.constraint(equalTo: document.bottomAnchor, constant: 10.0),
-            birthday.heightAnchor.constraint(equalToConstant: 50.0),
             
             
             send.leadingAnchor.constraint(equalTo: name.leadingAnchor),
@@ -227,10 +233,10 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         
         let nextTag = textField.tag + 1
-        let component = container.findViewByTag(tag: nextTag)
+        let component = container.findViewByTag(tag: nextTag) as? TextField
         
         if (component != nil) {
-            component?.becomeFirstResponder()
+            component?.gainFocus()
         } else {
             view.endEditing(true)
         }

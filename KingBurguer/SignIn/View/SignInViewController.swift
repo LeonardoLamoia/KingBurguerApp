@@ -25,7 +25,6 @@ class SignInViewController: UIViewController {
     
     lazy var email: TextField = {
         let ed = TextField()
-//        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu e-mail"
         ed.returnKeyType = .next
         ed.error = "E-mail invalido"
@@ -34,25 +33,27 @@ class SignInViewController: UIViewController {
         
         // Forma enxuta/encurtada de prog. funcional
         ed.failure = {
-            return self.email.text.count <= 10
+            return ed.text.count <= 10
         }
-//        ed.delegate = self
+        ed.delegate = self
 //        ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    // forma "tradicional"
-    func validation() -> Bool {
-        return email.text.count <= 3
-    }
+//    // forma "tradicional"
+//    func validation() -> Bool {
+//        return email.text.count <= 3
+//    }
     
-    lazy var password: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
+    lazy var password: TextField = {
+        let ed = TextField()
         ed.placeholder = "Entre com sua senha"
         ed.returnKeyType = .done
+        ed.error = "Senha deve ter no minimo 8 caracteres"
+        ed.failure = {
+            return ed.text.count <= 8
+        }
         ed.delegate = self
-        ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
@@ -139,7 +140,6 @@ class SignInViewController: UIViewController {
             password.leadingAnchor.constraint(equalTo: email.leadingAnchor),
             password.trailingAnchor.constraint(equalTo: email.trailingAnchor),
             password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10.0),
-            password.heightAnchor.constraint(equalToConstant: 50.0),
             
             send.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             send.trailingAnchor.constraint(equalTo: container.trailingAnchor),
@@ -205,7 +205,7 @@ extension SignInViewController: UITextFieldDelegate {
         if (textField.returnKeyType == .done) {
             view.endEditing(true)
         } else {
-            password.becomeFirstResponder()
+            password.gainFocus()
         }
         return false
     }

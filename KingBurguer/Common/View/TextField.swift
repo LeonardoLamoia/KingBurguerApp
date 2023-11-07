@@ -32,6 +32,12 @@ class TextField: UIView {
         }
     }
     
+    var delegate: UITextFieldDelegate? {
+        willSet {
+            ed.delegate = newValue
+        }
+    }
+    
     var returnKeyType: UIReturnKeyType = .next {
         willSet {
             ed.returnKeyType = newValue
@@ -41,6 +47,13 @@ class TextField: UIView {
     var text: String {
         get {
             return ed.text!
+        }
+    }
+    
+    override var tag: Int {
+        willSet {
+            super.tag = newValue
+            ed.tag = newValue
         }
     }
     
@@ -81,6 +94,10 @@ class TextField: UIView {
         
         heightConstraint = heightAnchor.constraint(equalToConstant: 50)
         heightConstraint.isActive = true
+    }
+    
+    func gainFocus() {
+        ed.becomeFirstResponder()
     }
     
     @objc func textFieldDidChanged(_ textField: UITextField) {
