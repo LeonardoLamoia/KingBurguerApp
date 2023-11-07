@@ -28,12 +28,13 @@ class SignInViewController: UIViewController {
         ed.placeholder = "Entre com seu e-mail"
         ed.returnKeyType = .next
         ed.error = "E-mail invalido"
+        ed.keyboardType = .emailAddress
         // forma "tradicional"
         // ed.failure = validation
         
         // Forma enxuta/encurtada de prog. funcional
         ed.failure = {
-            return ed.text.count <= 10
+            return !ed.text.isEmail()
         }
         ed.delegate = self
 //        ed.translatesAutoresizingMaskIntoConstraints = false
