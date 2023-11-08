@@ -10,8 +10,8 @@ import UIKit
 
 
 enum SignInForm: Int {
-    case email = 1
-    case password = 2
+    case email = 0x1
+    case password = 0x2
 }
 
 class SignInViewController: UIViewController {
@@ -35,22 +35,12 @@ class SignInViewController: UIViewController {
         ed.error = "E-mail invalido"
         ed.keyboardType = .emailAddress
         ed.bitmask = SignInForm.email.rawValue
-        // forma "tradicional"
-        // ed.failure = validation
-        
-        // Forma enxuta/encurtada de prog. funcional
         ed.failure = {
             return !ed.text.isEmail()
         }
         ed.delegate = self
-        //        ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
-    
-    //    // forma "tradicional"
-    //    func validation() -> Bool {
-    //        return email.text.count <= 3
-    //    }
     
     lazy var password: TextField = {
         let ed = TextField()
@@ -144,8 +134,8 @@ class SignInViewController: UIViewController {
             
             container.heightAnchor.constraint(equalToConstant: 490),
             
-            email.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            email.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            email.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10),
+            email.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10),
             email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150),
             
             
@@ -153,8 +143,8 @@ class SignInViewController: UIViewController {
             password.trailingAnchor.constraint(equalTo: email.trailingAnchor),
             password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10.0),
             
-            send.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            send.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            send.leadingAnchor.constraint(equalTo: email.leadingAnchor),
+            send.trailingAnchor.constraint(equalTo: email.trailingAnchor),
             send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
             send.heightAnchor.constraint(equalToConstant: 50.0),
             

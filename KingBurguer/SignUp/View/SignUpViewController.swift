@@ -9,6 +9,15 @@ import Foundation
 import UIKit
 
 
+enum SignUpForm: Int {
+    case name = 0x1
+    case email = 0x2
+    case password = 0x4
+    case document = 0x8
+    case birthday = 0x10
+}
+
+
 class SignUpViewController: UIViewController {
     
     let scroll: UIScrollView = {
@@ -27,9 +36,10 @@ class SignUpViewController: UIViewController {
         let ed = TextField()
         ed.placeholder = "Entre com seu nome"
         ed.tag = 1
+        ed.bitmask = SignUpForm.name.rawValue
         ed.returnKeyType = .next
         ed.delegate = self
-        ed.error = "Nome deve ter no minimo 8 caracteres"
+        ed.error = "Nome deve ter no minimo 3 caracteres"
         ed.failure = {
             return ed.text.count <= 3
         }
@@ -40,11 +50,13 @@ class SignUpViewController: UIViewController {
         let ed = TextField()
         ed.placeholder = "Entre com seu e-mail"
         ed.tag = 2
+        ed.bitmask = SignUpForm.email.rawValue
         ed.returnKeyType = .next
+        ed.keyboardType = .emailAddress
         ed.delegate = self
         ed.error = "E-mail invalido"
         ed.failure = {
-            return ed.text.count <= 3
+            return !ed.text.isEmail()
         }
         return ed
     }()
@@ -53,7 +65,9 @@ class SignUpViewController: UIViewController {
         let ed = TextField()
         ed.placeholder = "Entre com sua senha"
         ed.tag = 3
+        ed.bitmask = SignUpForm.password.rawValue
         ed.returnKeyType = .next
+        ed.secureTextEntry = true
         ed.delegate = self
         ed.error = "Senha deve ter no minimo 8 caracteres"
         ed.failure = {
@@ -67,6 +81,7 @@ class SignUpViewController: UIViewController {
         
         ed.placeholder = "Entre com seu CPF"
         ed.tag = 4
+        ed.bitmask = SignUpForm.document.rawValue
         ed.returnKeyType = .next
         ed.delegate = self
         ed.error = "CPF deve ter no minimo 11 digitos"
@@ -80,6 +95,7 @@ class SignUpViewController: UIViewController {
         let ed = TextField()
         ed.placeholder = "Entre com sua data de nascimento"
         ed.tag = 5
+        ed.bitmask = SignUpForm.birthday.rawValue
         ed.returnKeyType = .done
         ed.delegate = self
         ed.error = "Data de nascimento deve ser dd/MM/yyyy"
@@ -92,6 +108,7 @@ class SignUpViewController: UIViewController {
     lazy var send: LoadingButton = {
         let btn = LoadingButton()
         btn.title = "Entrar"
+        btn.enable(false)
         btn.titleColor = .white
         btn.backgroundColor = .red
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -104,6 +121,9 @@ class SignUpViewController: UIViewController {
             viewModel?.delegate = self
         }
     }
+    
+    var bitmaskResult = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -244,7 +264,22 @@ extension SignUpViewController: TextFieldDelegate {
     }
     
     func textFieldDidChanged(isValid: Bool, bitmask: Int) {
-        // Todo
+        if isValid {
+            self.bitmaskResult = self.bitmaskResult | bitmask
+            print("bitmaskResult is : \(self.bitmaskResult)")
+            
+        } else {
+            self.bitmaskResult = self.bitmaskResult & ~bitmask
+        }
+        
+        // e-mail e password precisam ser validos
+        self.send.enable(
+            (SignUpForm.name.rawValue & self.bitmaskResult != 0) &&
+            (SignUpForm.email.rawValue & self.bitmaskResult != 0) &&
+            (SignUpForm.password.rawValue & self.bitmaskResult != 0) &&
+            (SignUpForm.document.rawValue & self.bitmaskResult != 0) &&
+            (SignUpForm.birthday.rawValue & self.bitmaskResult != 0)
+        )
     }
 }
 
