@@ -81,8 +81,10 @@ class SignUpViewController: UIViewController {
         
         ed.placeholder = "Entre com seu CPF"
         ed.tag = 4
+        ed.maskField = Mask(mask: "###.###.###-##")
         ed.bitmask = SignUpForm.document.rawValue
         ed.returnKeyType = .next
+        ed.keyboardType = .numberPad
         ed.delegate = self
         ed.error = "CPF deve ter no minimo 11 digitos"
         ed.failure = {
@@ -95,12 +97,25 @@ class SignUpViewController: UIViewController {
         let ed = TextField()
         ed.placeholder = "Entre com sua data de nascimento"
         ed.tag = 5
+        ed.maskField = Mask(mask: "##/##/####")
         ed.bitmask = SignUpForm.birthday.rawValue
         ed.returnKeyType = .done
+        ed.keyboardType = .numberPad
         ed.delegate = self
         ed.error = "Data de nascimento deve ser dd/MM/yyyy"
         ed.failure = {
-            return ed.text.count != 10
+            let invalidCount = ed.text.count != 10
+            
+            let dt = DateFormatter()
+            dt.locale = Locale(identifier: "en_US_POSIX")
+            dt.dateFormat = "dd/MM/yyyy"
+            
+            // String -> Date
+            let date = dt.date(from: ed.text)
+            
+            let invalidDate = date == nil
+            
+            return invalidDate || invalidCount
         }
         return ed
     }()

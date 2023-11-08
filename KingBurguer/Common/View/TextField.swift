@@ -31,6 +31,10 @@ class TextField: UIView {
         return lb
     }()
     
+    
+    var maskField: Mask?
+    
+    
     var bitmask: Int = 0
     
     var placeholder: String? {
@@ -125,6 +129,12 @@ class TextField: UIView {
     }
     
     @objc func textFieldDidChanged(_ textField: UITextField) {
+        if let mask = maskField {
+            if let res = mask.process(value: textField.text!) {
+                textField.text = res
+            }
+        }
+        
         guard let f = failure else { return }
         if let error = error {
             if f() {

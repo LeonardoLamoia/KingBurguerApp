@@ -16,4 +16,15 @@ extension String {
         
         return NSPredicate(format: "SELF MATCHES %@", regEx).evaluate(with: self)
     }
+    
+    func charAtIndex(index: Int) -> Character? {
+        var indexCurrent = 0
+        for char in self {
+            if index == indexCurrent {
+                return char
+            }
+            indexCurrent = indexCurrent + 1
+        }
+        return nil
+    }
 }
