@@ -225,7 +225,7 @@ class SignUpViewController: UIViewController {
     }
 }
 
-extension SignUpViewController: UITextFieldDelegate {
+extension SignUpViewController: TextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField.returnKeyType == .done) {
             view.endEditing(true)
@@ -241,6 +241,10 @@ extension SignUpViewController: UITextFieldDelegate {
             view.endEditing(true)
         }
         return false
+    }
+    
+    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+        // Todo
     }
 }
 

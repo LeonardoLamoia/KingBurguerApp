@@ -29,6 +29,7 @@ class SignInViewController: UIViewController {
         ed.returnKeyType = .next
         ed.error = "E-mail invalido"
         ed.keyboardType = .emailAddress
+        ed.bitmask = 1
         // forma "tradicional"
         // ed.failure = validation
         
@@ -37,14 +38,14 @@ class SignInViewController: UIViewController {
             return !ed.text.isEmail()
         }
         ed.delegate = self
-//        ed.translatesAutoresizingMaskIntoConstraints = false
+        //        ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-//    // forma "tradicional"
-//    func validation() -> Bool {
-//        return email.text.count <= 3
-//    }
+    //    // forma "tradicional"
+    //    func validation() -> Bool {
+    //        return email.text.count <= 3
+    //    }
     
     lazy var password: TextField = {
         let ed = TextField()
@@ -52,6 +53,7 @@ class SignInViewController: UIViewController {
         ed.returnKeyType = .done
         ed.error = "Senha deve ter no minimo 8 caracteres"
         ed.secureTextEntry = true
+        ed.bitmask = 2
         ed.failure = {
             return ed.text.count <= 8
         }
@@ -72,7 +74,7 @@ class SignInViewController: UIViewController {
         let btn = UIButton()
         btn.setTitle("Criar Conta", for: .normal)
         btn.setTitleColor(.label, for: .normal)
-//        btn.backgroundColor = .red
+        //        btn.backgroundColor = .red
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
         return btn
@@ -83,6 +85,8 @@ class SignInViewController: UIViewController {
             viewModel?.delegate = self
         }
     }
+    
+    var bitmaskResult: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -202,7 +206,8 @@ class SignInViewController: UIViewController {
 }
 
 
-extension SignInViewController: UITextFieldDelegate {
+extension SignInViewController: TextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField.returnKeyType == .done) {
             view.endEditing(true)
@@ -211,7 +216,24 @@ extension SignInViewController: UITextFieldDelegate {
         }
         return false
     }
+    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+        if isValid {
+            self.bitmaskResult = self.bitmaskResult | bitmask
+            print("bitmaskResult is : \(self.bitmaskResult)")
+            
+            //            if self.bitmaskResult == 3 {
+            //                print("Botao ativado!!!")
+            //            }
+            
+            if (1 & self.bitmaskResult != 0)
+                && (2 & self.bitmaskResult != 0) {
+                print("Botão ativado!!")
+            }
+        }
+    }
+    
 }
+
 
 
 // 3. Observers

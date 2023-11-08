@@ -7,6 +7,11 @@
 
 import UIKit
 
+
+protocol TextFieldDelegate: UITextFieldDelegate {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int)
+}
+
 class TextField: UIView {
     
 
@@ -25,6 +30,8 @@ class TextField: UIView {
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()
+    
+    var bitmask: Int = 0
     
     var placeholder: String? {
         willSet {
@@ -49,7 +56,7 @@ class TextField: UIView {
     }
     
     
-    var delegate: UITextFieldDelegate? {
+    var delegate: TextFieldDelegate? {
         willSet {
             ed.delegate = newValue
         }
@@ -123,9 +130,11 @@ class TextField: UIView {
             if f() {
                 errorLabel.text = error
                 heightConstraint.constant = 70
+                delegate?.textFieldDidChanged(isValid: false, bitmask: bitmask)
             } else {
                 errorLabel.text = ""
                 heightConstraint.constant = 50
+                delegate?.textFieldDidChanged(isValid: true, bitmask: bitmask)
             }
         }
     }
