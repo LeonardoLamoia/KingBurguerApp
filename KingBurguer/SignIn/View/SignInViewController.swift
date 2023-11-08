@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 
+enum SignInForm: Int {
+    case email = 1
+    case password = 2
+}
+
 class SignInViewController: UIViewController {
     
     let scroll: UIScrollView = {
@@ -29,7 +34,7 @@ class SignInViewController: UIViewController {
         ed.returnKeyType = .next
         ed.error = "E-mail invalido"
         ed.keyboardType = .emailAddress
-        ed.bitmask = 1
+        ed.bitmask = SignInForm.email.rawValue
         // forma "tradicional"
         // ed.failure = validation
         
@@ -53,7 +58,7 @@ class SignInViewController: UIViewController {
         ed.returnKeyType = .done
         ed.error = "Senha deve ter no minimo 8 caracteres"
         ed.secureTextEntry = true
-        ed.bitmask = 2
+        ed.bitmask = SignInForm.password.rawValue
         ed.failure = {
             return ed.text.count <= 8
         }
@@ -66,6 +71,7 @@ class SignInViewController: UIViewController {
         btn.title = "Entrar"
         btn.titleColor = .white
         btn.backgroundColor = .red
+        btn.enable(false)
         btn.addTarget(self, action: #selector(sendDidTap))
         return btn
     }()
@@ -221,15 +227,12 @@ extension SignInViewController: TextFieldDelegate {
             self.bitmaskResult = self.bitmaskResult | bitmask
             print("bitmaskResult is : \(self.bitmaskResult)")
             
-            //            if self.bitmaskResult == 3 {
-            //                print("Botao ativado!!!")
-            //            }
-            
-            if (1 & self.bitmaskResult != 0)
-                && (2 & self.bitmaskResult != 0) {
-                print("Botão ativado!!")
-            }
+        } else {
+            self.bitmaskResult = self.bitmaskResult & ~bitmask
         }
+        
+        // e-mail e password precisam ser validos
+        self.send.enable((SignInForm.email.rawValue & self.bitmaskResult != 0) && (SignInForm.password.rawValue & self.bitmaskResult != 0))
     }
     
 }

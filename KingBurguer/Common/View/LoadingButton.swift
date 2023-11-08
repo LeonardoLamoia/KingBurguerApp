@@ -56,6 +56,15 @@ class LoadingButton: UIView {
         button.addTarget(target, action: action, for: .touchUpInside)
     }
     
+    func enable(_ isEnable: Bool) {
+        button.isEnabled = isEnable
+        if isEnable {
+            alpha = 1
+        } else {
+            alpha = 0.5
+        }
+    }
+    
     func startLoading(_ loading: Bool) {
         button.isEnabled = !loading
         if loading {
