@@ -15,6 +15,12 @@ protocol SignUpViewModelDelegate {
 
 class SignUpViewModel {
     
+    var name = "UserA"
+    var email = "userA@gmail.com"
+    var password = "12345678"
+    var document = "111.222.333-11"
+    var birthday = "2019-08-24"
+    
     var delegate: SignUpViewModelDelegate?
     var coordinator: SignUpCoordinator?
     
@@ -27,11 +33,7 @@ class SignUpViewModel {
     // Informa: mudou o estado
     func send() {
         state = .loading
-        
-        // código de delay, (esperar 2 segundos) - simulando uma latencia de rede
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.state = .goToHome
-        }
+        WebServiceAPI.shared.creatUser(name: name, email: email, password: password, document: document, birthday: birthday)
     }
     
     func goToHome() {

@@ -28,6 +28,7 @@
 		1B7DEAC72AF558FD004A5213 /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEAC62AF558FD004A5213 /* CouponViewController.swift */; };
 		1B7DEAC92AF57213004A5213 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEAC82AF57213004A5213 /* FeedTableViewCell.swift */; };
 		1B7DEACB2AF586D7004A5213 /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEACA2AF586D7004A5213 /* HighlightView.swift */; };
+		1B93A4332AFD5673004AA245 /* WebServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93A4322AFD5673004AA245 /* WebServiceAPI.swift */; };
 		1B9688DB2AD1D0E100C84086 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9688DA2AD1D0E100C84086 /* SignInCoordinator.swift */; };
 		1B9688DD2AD1D7FA00C84086 /* SingUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9688DC2AD1D7FA00C84086 /* SingUpCoordinator.swift */; };
 		1BCB8A102AD074E4009A4AB8 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB8A0F2AD074E4009A4AB8 /* SignInViewModel.swift */; };
@@ -59,6 +60,7 @@
 		1B7DEAC62AF558FD004A5213 /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
 		1B7DEAC82AF57213004A5213 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		1B7DEACA2AF586D7004A5213 /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
+		1B93A4322AFD5673004AA245 /* WebServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceAPI.swift; sourceTree = "<group>"; };
 		1B9688DA2AD1D0E100C84086 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		1B9688DC2AD1D7FA00C84086 /* SingUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpCoordinator.swift; sourceTree = "<group>"; };
 		1BCB8A0F2AD074E4009A4AB8 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				1B3617EB2AF1652F006F4710 /* View */,
 				1B2B72EE2AFA9D0F00A16D9B /* Strings.swift */,
 				1B2B72F02AFBC8A500A16D9B /* Mask.swift */,
+				1B93A4322AFD5673004AA245 /* WebServiceAPI.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				1B2B72F12AFBC8A500A16D9B /* Mask.swift in Sources */,
 				1B3617DE2AED7CA3006F4710 /* SignUpState.swift in Sources */,
 				1B3617ED2AF16544006F4710 /* LoadingButton.swift in Sources */,
+				1B93A4332AFD5673004AA245 /* WebServiceAPI.swift in Sources */,
 				1B7DEACB2AF586D7004A5213 /* HighlightView.swift in Sources */,
 				1B3617E42AED8D5D006F4710 /* HomeViewController.swift in Sources */,
 				1BCB8A102AD074E4009A4AB8 /* SignInViewModel.swift in Sources */,
