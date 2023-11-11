@@ -9,6 +9,9 @@ import UIKit
 
 class WebServiceAPI {
     
+    
+    static let apiKey = "94310d82-fc87-44af-be84-ca2a37b27167"
+    
     // padrao SINGLETON
     static let shared = WebServiceAPI()
     
@@ -18,6 +21,7 @@ class WebServiceAPI {
             "password": password,
             "name": name,
             "email": email,
+            "document": document,
             "birthday": birthday
         ]
         
@@ -34,6 +38,7 @@ class WebServiceAPI {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "accept")
+            request.setValue(WebServiceAPI.apiKey, forHTTPHeaderField: "x-secret-key")
             request.httpBody = jsonRequest
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in

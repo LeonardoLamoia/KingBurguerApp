@@ -15,11 +15,11 @@ protocol SignUpViewModelDelegate {
 
 class SignUpViewModel {
     
-    var name = "UserA"
-    var email = "userA@gmail.com"
-    var password = "12345678"
-    var document = "111.222.333-11"
-    var birthday = "2019-08-24"
+    var name = ""
+    var email = ""
+    var password = ""
+    var document = ""
+    var birthday = ""
     
     var delegate: SignUpViewModelDelegate?
     var coordinator: SignUpCoordinator?
@@ -33,7 +33,22 @@ class SignUpViewModel {
     // Informa: mudou o estado
     func send() {
         state = .loading
-        WebServiceAPI.shared.creatUser(name: name, email: email, password: password, document: document, birthday: birthday)
+        
+        // String -> Date
+        let dtString = DateFormatter()
+        dtString.locale = Locale(identifier: "en_US_POSIX")
+        dtString.dateFormat = "dd/MM/yyyy"
+        let date = dtString.date(from: birthday) ?? Date()
+        
+        // Date -> String
+        let dtDate = DateFormatter()
+        dtDate.locale = Locale(identifier: "en_US_POSIX")
+        dtDate.dateFormat = "yyyy-MM-dd"
+        let birthdayFormatted = dtDate.string(from: date)
+        
+        let documentFormatted = document.digits
+        
+        WebServiceAPI.shared.creatUser(name: name, email: email, password: password, document: documentFormatted, birthday: birthdayFormatted)
     }
     
     func goToHome() {

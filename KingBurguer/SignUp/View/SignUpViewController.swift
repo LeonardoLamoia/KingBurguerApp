@@ -41,7 +41,7 @@ class SignUpViewController: UIViewController {
         ed.delegate = self
         ed.error = "Nome deve ter no minimo 3 caracteres"
         ed.failure = {
-            return ed.text.count <= 3
+            return ed.text.count < 3
         }
         return ed
     }()
@@ -71,7 +71,7 @@ class SignUpViewController: UIViewController {
         ed.delegate = self
         ed.error = "Senha deve ter no minimo 8 caracteres"
         ed.failure = {
-            return ed.text.count <= 8
+            return ed.text.count < 8
         }
         return ed
     }()
@@ -278,10 +278,9 @@ extension SignUpViewController: TextFieldDelegate {
         return false
     }
     
-    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int, text: String) {
         if isValid {
             self.bitmaskResult = self.bitmaskResult | bitmask
-            print("bitmaskResult is : \(self.bitmaskResult)")
             
         } else {
             self.bitmaskResult = self.bitmaskResult & ~bitmask
@@ -295,6 +294,22 @@ extension SignUpViewController: TextFieldDelegate {
             (SignUpForm.document.rawValue & self.bitmaskResult != 0) &&
             (SignUpForm.birthday.rawValue & self.bitmaskResult != 0)
         )
+        
+        if bitmask == SignUpForm.name.rawValue {
+            viewModel?.name = text
+        }
+        else if bitmask == SignUpForm.email.rawValue {
+            viewModel?.email = text
+        }
+        else if bitmask == SignUpForm.password.rawValue {
+            viewModel?.password = text
+        }
+        else if bitmask == SignUpForm.document.rawValue {
+            viewModel?.document = text
+        }
+        else if bitmask == SignUpForm.birthday.rawValue {
+            viewModel?.birthday = text
+        }
     }
 }
 

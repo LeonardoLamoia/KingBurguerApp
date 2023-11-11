@@ -50,7 +50,7 @@ class SignInViewController: UIViewController {
         ed.secureTextEntry = true
         ed.bitmask = SignInForm.password.rawValue
         ed.failure = {
-            return ed.text.count <= 8
+            return ed.text.count < 8
         }
         ed.delegate = self
         return ed
@@ -212,7 +212,7 @@ extension SignInViewController: TextFieldDelegate {
         }
         return false
     }
-    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int, text: String) {
         if isValid {
             self.bitmaskResult = self.bitmaskResult | bitmask
             print("bitmaskResult is : \(self.bitmaskResult)")
