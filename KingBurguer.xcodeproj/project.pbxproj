@@ -29,6 +29,7 @@
 		1B7DEAC92AF57213004A5213 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEAC82AF57213004A5213 /* FeedTableViewCell.swift */; };
 		1B7DEACB2AF586D7004A5213 /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEACA2AF586D7004A5213 /* HighlightView.swift */; };
 		1B93A4332AFD5673004AA245 /* WebServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93A4322AFD5673004AA245 /* WebServiceAPI.swift */; };
+		1B93A4362B008CF4004AA245 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93A4352B008CF4004AA245 /* SignUpRequest.swift */; };
 		1B9688DB2AD1D0E100C84086 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9688DA2AD1D0E100C84086 /* SignInCoordinator.swift */; };
 		1B9688DD2AD1D7FA00C84086 /* SingUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9688DC2AD1D7FA00C84086 /* SingUpCoordinator.swift */; };
 		1BCB8A102AD074E4009A4AB8 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB8A0F2AD074E4009A4AB8 /* SignInViewModel.swift */; };
@@ -61,6 +62,7 @@
 		1B7DEAC82AF57213004A5213 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		1B7DEACA2AF586D7004A5213 /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
 		1B93A4322AFD5673004AA245 /* WebServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceAPI.swift; sourceTree = "<group>"; };
+		1B93A4352B008CF4004AA245 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
 		1B9688DA2AD1D0E100C84086 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		1B9688DC2AD1D7FA00C84086 /* SingUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpCoordinator.swift; sourceTree = "<group>"; };
 		1BCB8A0F2AD074E4009A4AB8 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -230,6 +232,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1B93A4342B008CC8004AA245 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B93A4352B008CF4004AA245 /* SignUpRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1BCB8A0E2AD074C4009A4AB8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +252,7 @@
 		1BCB8A132AD15DE8009A4AB8 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				1B93A4342B008CC8004AA245 /* Model */,
 				1BCB8A152AD15E03009A4AB8 /* ViewModel */,
 				1BCB8A142AD15DFC009A4AB8 /* View */,
 				1B9688DC2AD1D7FA00C84086 /* SingUpCoordinator.swift */,
@@ -343,6 +354,7 @@
 				1B7DEAC72AF558FD004A5213 /* CouponViewController.swift in Sources */,
 				1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */,
 				1B2B72EB2AF80EB500A16D9B /* FeedCollectionViewCell.swift in Sources */,
+				1B93A4362B008CF4004AA245 /* SignUpRequest.swift in Sources */,
 				1BCB8A172AD15E4D009A4AB8 /* SignUpViewController.swift in Sources */,
 				1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */,
 				1B3617E12AED8D1B006F4710 /* HomeCoordinator.swift in Sources */,

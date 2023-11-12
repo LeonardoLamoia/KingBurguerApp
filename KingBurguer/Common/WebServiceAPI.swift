@@ -15,18 +15,11 @@ class WebServiceAPI {
     // padrao SINGLETON
     static let shared = WebServiceAPI()
     
-    func creatUser(name: String, email: String, password: String, document: String, birthday: String) {
+    func creatUser(request: SignUpRequest) {
         
-        let json: [String: Any] = [
-            "password": password,
-            "name": name,
-            "email": email,
-            "document": document,
-            "birthday": birthday
-        ]
         
         do {
-            let jsonRequest = try JSONSerialization.data(withJSONObject: json)
+            let jsonRequest = try JSONEncoder().encode(request)
             
             let endpoint = "https://hades.tiagoaguiar.co/kingburguer/users"
             guard let url = URL(string: endpoint) else {

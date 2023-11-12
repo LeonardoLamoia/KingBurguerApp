@@ -333,7 +333,7 @@ extension SignUpViewController: SignUpViewModelDelegate {
         case .none:
             break
         case .loading:
-            // mostrar a progress
+            send.startLoading(true)
             break
         case .goToHome:
             viewModel?.goToHome()

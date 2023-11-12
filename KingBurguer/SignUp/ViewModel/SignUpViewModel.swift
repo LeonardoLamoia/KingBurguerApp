@@ -48,7 +48,12 @@ class SignUpViewModel {
         
         let documentFormatted = document.digits
         
-        WebServiceAPI.shared.creatUser(name: name, email: email, password: password, document: documentFormatted, birthday: birthdayFormatted)
+        WebServiceAPI.shared.creatUser(request: SignUpRequest(
+            name: name,
+            email: email,
+            password: password,
+            document: documentFormatted,
+            birthday: birthdayFormatted))
     }
     
     func goToHome() {
