@@ -48,7 +48,7 @@ class SignUpViewModel {
         
         let documentFormatted = document.digits
         
-        WebServiceAPI.shared.creatUser(request: SignUpRequest(
+        WebServiceAPI.shared.createUser(request: SignUpRequest(
             name: name,
             email: email,
             password: password,
