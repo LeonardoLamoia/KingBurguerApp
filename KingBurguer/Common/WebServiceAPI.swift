@@ -38,7 +38,6 @@ class WebServiceAPI {
         }
     }
     
-   
     
     func call<R: Encodable>(path: Endpoint, body: R, completion: @escaping (String) -> Void) {
         
