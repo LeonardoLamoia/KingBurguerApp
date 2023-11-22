@@ -21,6 +21,19 @@ class WebServiceAPI {
         case createUser = "/users"
     }
     
+    enum NetworkError {
+        case unauthorized
+        case badRequest
+        case notFound
+        case internalError
+        case unknown
+    }
+    
+    enum Result {
+        case success(Data?)
+        case failure(NetworkError, Data?)
+    }
+    
     
     private func completeUrl(path: Endpoint) -> URLRequest? {
         let endpoint = "\(WebServiceAPI.baseURL)\(path.rawValue)"
@@ -33,15 +46,28 @@ class WebServiceAPI {
     
     
     func createUser(request: SignUpRequest) {
-        call(path: .createUser, body: request) { res in
-            print(res)
+        call(path: .createUser, body: request) { result in
+            switch result {
+            case .success(let data):
+                if let d = data {
+                    print("SUCESS: \(String(data: d, encoding: .utf8))")
+                }
+                break
+                
+            case .failure(let error, let data):
+                print("ERROR: \(error)")
+                if let d = data {
+                    print("  DATA: \(String(data: d, encoding: .utf8))")
+                }
+                break
+            }
         }
     }
     
     
-    func call<R: Encodable>(path: Endpoint, body: R, completion: @escaping (String) -> Void) {
+    func call<R: Encodable>(path: Endpoint, body: R, completion: @escaping (Result) -> Void) {
         
-      
+        
         do {
             let jsonRequest = try JSONEncoder().encode(body)
             
@@ -53,10 +79,10 @@ class WebServiceAPI {
             request.setValue("application/json", forHTTPHeaderField: "accept")
             request.setValue(WebServiceAPI.apiKey, forHTTPHeaderField: "x-secret-key")
             
-      
+            
             request.httpBody = jsonRequest
             
-           
+            
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 // assincrono
                 print("Response is \(String(describing: response))")
@@ -64,19 +90,32 @@ class WebServiceAPI {
                 
                 if let error = error {
                     print(error)
-                    completion("ERROR \(error)")
+                    completion(Result.failure(.internalError, data))
                     return
                 }
                 
-                guard let data = data else {
-                    completion("No data found!")
-                    return
+                if let r = response as? HTTPURLResponse {
+                    switch r.statusCode {
+                    case 200:
+                        completion(.success(data))
+                    case 401:
+                        completion(Result.failure(.unauthorized, data))
+                        break
+                    case 404:
+                        completion(Result.failure(.notFound, data))
+                        break
+                    case 400:
+                        completion(Result.failure(.badRequest, data))
+                        break
+                    case 500:
+                        completion(Result.failure(.internalError, data))
+                        break
+                    default:
+                        completion(Result.failure(.unknown, data))
+                        break
+                    }
                 }
                 
-                
-                if let d = String(data: data, encoding: .utf8) {
-                    print("Data is \(d)")
-                }
             }
             
             

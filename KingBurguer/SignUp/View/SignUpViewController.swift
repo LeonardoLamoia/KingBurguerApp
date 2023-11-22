@@ -32,6 +32,12 @@ class SignUpViewController: UIViewController {
         return v
     }()
     
+    lazy var textField: UITextField = {
+        let text = UITextField()
+        text.font = UIFont.systemFont(ofSize: 29)
+        return text
+    }()
+    
     lazy var name: TextField = {
         let ed = TextField()
         ed.placeholder = "Entre com seu nome"
