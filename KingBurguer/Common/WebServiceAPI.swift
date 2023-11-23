@@ -56,9 +56,25 @@ class WebServiceAPI {
                 
             case .failure(let error, let data):
                 print("ERROR: \(error)")
-                if let d = data {
-                    print("  DATA: \(String(data: d, encoding: .utf8))")
-                }
+                
+                guard let data = data else { return }
+                
+                    switch error {
+                    case .unauthorized:
+                        let response = try? JSONDecoder().decode(SignUpResponseUnauthorized.self, from: data)
+                        print(response?.detail)
+                        break
+                        
+                    case .badRequest:
+                        let response = try? JSONDecoder().decode(SignUpResponseError.self, from: data)
+                        print(response?.detail)
+                        break
+                        
+                    default:
+                        let response = try? JSONDecoder().decode(SignUpResponseError.self, from: data)
+                        print(response?.detail)
+                        break
+                    }
                 break
             }
         }
