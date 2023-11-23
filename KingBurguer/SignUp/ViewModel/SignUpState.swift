@@ -12,6 +12,6 @@ import UIKit
 enum SignUpState {
     case none
     case loading
-    case goToHome
+    case goToLogin
     case error(String)
 }

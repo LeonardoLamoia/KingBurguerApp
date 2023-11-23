@@ -341,10 +341,16 @@ extension SignUpViewController: SignUpViewModelDelegate {
         case .loading:
             send.startLoading(true)
             break
-        case .goToHome:
-            viewModel?.goToHome()
+        case .goToLogin:
+            send.startLoading(false)
+            let alert = UIAlertController(title: "Titulo", message: "Usuario Cadastrado com sucesso!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                self.viewModel?.goToLogin()
+            }))
+            self.viewModel?.goToLogin()
             break
         case .error(let msg):
+            send.startLoading(false)
             let alert = UIAlertController(title: "Titulo", message: msg, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
             self.present(alert, animated: true)

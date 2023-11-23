@@ -48,16 +48,28 @@ class SignUpViewModel {
         
         let documentFormatted = document.digits
         
+        // MAIN-THREAD
         WebServiceAPI.shared.createUser(request: SignUpRequest(
             name: name,
             email: email,
             password: password,
             document: documentFormatted,
-            birthday: birthdayFormatted))
+            birthday: birthdayFormatted)) {created, error in
+                
+                DispatchQueue.main.async {
+                    if let errorMessage = error {
+                        self.state = .error(errorMessage)
+                    } else if let created = created {
+                        if created {
+                            self.state = .goToLogin
+                        }
+                    }
+                }
+            }
     }
     
-    func goToHome() {
-        coordinator?.home()
+    func goToLogin() {
+        coordinator?.login()
     }
     
 }

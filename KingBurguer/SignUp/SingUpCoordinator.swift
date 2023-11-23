@@ -29,7 +29,7 @@ class SignUpCoordinator {
         navigationController.pushViewController(signUpVC, animated: true)
     }
     
-    func home() {
-        parentCoordinator?.home()
+    func login() {
+        navigationController.popViewController(animated: true)
     }
 }
