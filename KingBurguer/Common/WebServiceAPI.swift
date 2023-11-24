@@ -19,6 +19,7 @@ class WebServiceAPI {
     
     enum Endpoint: String {
         case createUser = "/users"
+        case login = "/auth/login"
     }
     
     enum NetworkError {
@@ -44,6 +45,35 @@ class WebServiceAPI {
         return URLRequest(url: url)
     }
     
+    func login(request: SignInRequest, completion: @escaping (SignInResponse?, String?) -> Void) {
+        call(path: .login, body: request) { result in
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                let response = try? JSONDecoder().decode(SignInResponse.self, from: data)
+                completion(response, nil)
+                break
+                
+            case .failure(let error, let data):
+                print("ERROR: \(error)")
+                
+                guard let data = data else { return }
+                
+                switch error {
+                case .unauthorized:
+                    let response = try? JSONDecoder().decode(ResponseUnauthorized.self, from: data)
+                    completion(nil, response?.detail.message)
+                    break
+                default:
+                    let response = try? JSONDecoder().decode(SignUpResponseError.self, from: data)
+                    completion(nil, response?.detail)
+                    break
+                }
+                break
+            }
+        }
+    }
+    
     
     func createUser(request: SignUpRequest, completion: @escaping (Bool?, String?) -> Void ){
         call(path: .createUser, body: request) { result in
@@ -51,97 +81,97 @@ class WebServiceAPI {
             case .success(let data):
                 guard let data = data else { return }
                 
-//                let response = try? JSONDecoder().decode(SignUpResponse.self, from: data)
+                //                let response = try? JSONDecoder().decode(SignUpResponse.self, from: data)
                 completion(true, nil)
-            break
-            
-        case .failure(let error, let data):
-            print("ERROR: \(error)")
-            
-            guard let data = data else { return }
-            
-            switch error {
-            case .unauthorized:
-                let response = try? JSONDecoder().decode(SignUpResponseUnauthorized.self, from: data)
-                completion(nil, response?.detail.message)
                 break
                 
-            case .badRequest:
-                let response = try? JSONDecoder().decode(SignUpResponseError.self, from: data)
-                completion(nil, response?.detail)
-                break
+            case .failure(let error, let data):
+                print("ERROR: \(error)")
                 
-            default:
-                let response = try? JSONDecoder().decode(SignUpResponseError.self, from: data)
-                completion(nil, response?.detail)
-                break
-            }
-            break
-        }
-    }
-}
-
-
-func call<R: Encodable>(path: Endpoint, body: R, completion: @escaping (Result) -> Void) {
-    
-    
-    do {
-        let jsonRequest = try JSONEncoder().encode(body)
-        
-        
-        guard var request = completeUrl(path: path) else { return }
-        
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "accept")
-        request.setValue(WebServiceAPI.apiKey, forHTTPHeaderField: "x-secret-key")
-        
-        
-        request.httpBody = jsonRequest
-        
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            // assincrono
-            print("Response is \(String(describing: response))")
-            print("--------------------\n\n")
-            
-            if let error = error {
-                print(error)
-                completion(Result.failure(.internalError, data))
-                return
-            }
-            
-            if let r = response as? HTTPURLResponse {
-                switch r.statusCode {
-                case 200:
-                    completion(.success(data))
-                case 401:
-                    completion(Result.failure(.unauthorized, data))
+                guard let data = data else { return }
+                
+                switch error {
+                case .unauthorized:
+                    let response = try? JSONDecoder().decode(ResponseUnauthorized.self, from: data)
+                    completion(nil, response?.detail.message)
                     break
-                case 404:
-                    completion(Result.failure(.notFound, data))
+                    
+                case .badRequest:
+                    let response = try? JSONDecoder().decode(SignUpResponseError.self, from: data)
+                    completion(nil, response?.detail)
                     break
-                case 400:
-                    completion(Result.failure(.badRequest, data))
-                    break
-                case 500:
-                    completion(Result.failure(.internalError, data))
-                    break
+                    
                 default:
-                    completion(Result.failure(.unknown, data))
+                    let response = try? JSONDecoder().decode(SignUpResponseError.self, from: data)
+                    completion(nil, response?.detail)
                     break
                 }
+                break
             }
-            
         }
-        
-        
-        task.resume()
-    }
-    catch {
-        print(error)
-        return
     }
     
-}
+    
+    func call<R: Encodable>(path: Endpoint, body: R, completion: @escaping (Result) -> Void) {
+        
+        
+        do {
+            let jsonRequest = try JSONEncoder().encode(body)
+            
+            
+            guard var request = completeUrl(path: path) else { return }
+            
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "accept")
+            request.setValue(WebServiceAPI.apiKey, forHTTPHeaderField: "x-secret-key")
+            
+            
+            request.httpBody = jsonRequest
+            
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                // assincrono
+                print("Response is \(String(describing: response))")
+                print("--------------------\n\n")
+                
+                if let error = error {
+                    print(error)
+                    completion(Result.failure(.internalError, data))
+                    return
+                }
+                
+                if let r = response as? HTTPURLResponse {
+                    switch r.statusCode {
+                    case 200:
+                        completion(.success(data))
+                    case 401:
+                        completion(Result.failure(.unauthorized, data))
+                        break
+                    case 404:
+                        completion(Result.failure(.notFound, data))
+                        break
+                    case 400:
+                        completion(Result.failure(.badRequest, data))
+                        break
+                    case 500:
+                        completion(Result.failure(.internalError, data))
+                        break
+                    default:
+                        completion(Result.failure(.unknown, data))
+                        break
+                    }
+                }
+                
+            }
+            
+            
+            task.resume()
+        }
+        catch {
+            print(error)
+            return
+        }
+        
+    }
 }

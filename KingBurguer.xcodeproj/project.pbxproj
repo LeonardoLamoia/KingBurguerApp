@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B199B7B2B0EC90400E47397 /* SignUpResponseUnauthorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B199B7A2B0EC90400E47397 /* SignUpResponseUnauthorized.swift */; };
 		1B199B7D2B0EF22D00E47397 /* SignUpResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B199B7C2B0EF22D00E47397 /* SignUpResponseError.swift */; };
 		1B199B7F2B0F98D300E47397 /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B199B7E2B0F98D300E47397 /* SignUpResponse.swift */; };
+		1B199B822B1024E700E47397 /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B199B812B1024E700E47397 /* SignInRequest.swift */; };
+		1B199B842B10259500E47397 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B199B832B10259500E47397 /* SignInResponse.swift */; };
+		1B199B872B10300100E47397 /* ResponseUnauthorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B199B862B10300100E47397 /* ResponseUnauthorized.swift */; };
 		1B2B72EB2AF80EB500A16D9B /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B72EA2AF80EB500A16D9B /* FeedCollectionViewCell.swift */; };
 		1B2B72ED2AF8131B00A16D9B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B72EC2AF8131B00A16D9B /* TextField.swift */; };
 		1B2B72EF2AFA9D0F00A16D9B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2B72EE2AFA9D0F00A16D9B /* Strings.swift */; };
@@ -41,9 +43,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B199B7A2B0EC90400E47397 /* SignUpResponseUnauthorized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseUnauthorized.swift; sourceTree = "<group>"; };
 		1B199B7C2B0EF22D00E47397 /* SignUpResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseError.swift; sourceTree = "<group>"; };
 		1B199B7E2B0F98D300E47397 /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
+		1B199B812B1024E700E47397 /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
+		1B199B832B10259500E47397 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		1B199B862B10300100E47397 /* ResponseUnauthorized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUnauthorized.swift; sourceTree = "<group>"; };
 		1B2B72EA2AF80EB500A16D9B /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B2B72EC2AF8131B00A16D9B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1B2B72EE2AFA9D0F00A16D9B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -87,6 +91,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B199B802B1024BF00E47397 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B199B812B1024E700E47397 /* SignInRequest.swift */,
+				1B199B832B10259500E47397 /* SignInResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1B199B852B102FDC00E47397 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B199B862B10300100E47397 /* ResponseUnauthorized.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1B3617DF2AED8CE6006F4710 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +137,7 @@
 		1B3617EA2AF16520006F4710 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1B199B852B102FDC00E47397 /* Model */,
 				1B3617EB2AF1652F006F4710 /* View */,
 				1B2B72EE2AFA9D0F00A16D9B /* Strings.swift */,
 				1B2B72F02AFBC8A500A16D9B /* Mask.swift */,
@@ -172,6 +194,7 @@
 		1B6AFAD22ACDCA9E00B8504D /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				1B199B802B1024BF00E47397 /* Model */,
 				1BCB8A0E2AD074C4009A4AB8 /* ViewModel */,
 				1B6AFAD32ACDCAAF00B8504D /* View */,
 				1B9688DA2AD1D0E100C84086 /* SignInCoordinator.swift */,
@@ -242,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				1B93A4352B008CF4004AA245 /* SignUpRequest.swift */,
-				1B199B7A2B0EC90400E47397 /* SignUpResponseUnauthorized.swift */,
 				1B199B7C2B0EF22D00E47397 /* SignUpResponseError.swift */,
 				1B199B7E2B0F98D300E47397 /* SignUpResponse.swift */,
 			);
@@ -357,10 +379,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B9688DD2AD1D7FA00C84086 /* SingUpCoordinator.swift in Sources */,
+				1B199B822B1024E700E47397 /* SignInRequest.swift in Sources */,
 				1B2B72ED2AF8131B00A16D9B /* TextField.swift in Sources */,
 				1B6AFAD52ACDCAF400B8504D /* SignInViewController.swift in Sources */,
 				1B7DEAC92AF57213004A5213 /* FeedTableViewCell.swift in Sources */,
 				1B7DEAC72AF558FD004A5213 /* CouponViewController.swift in Sources */,
+				1B199B872B10300100E47397 /* ResponseUnauthorized.swift in Sources */,
 				1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */,
 				1B2B72EB2AF80EB500A16D9B /* FeedCollectionViewCell.swift in Sources */,
 				1B93A4362B008CF4004AA245 /* SignUpRequest.swift in Sources */,
@@ -369,7 +393,6 @@
 				1B3617E12AED8D1B006F4710 /* HomeCoordinator.swift in Sources */,
 				1B7DEAC32AF558C7004A5213 /* FeedViewController.swift in Sources */,
 				1B7DEAC52AF558E8004A5213 /* ProfileViewController.swift in Sources */,
-				1B199B7B2B0EC90400E47397 /* SignUpResponseUnauthorized.swift in Sources */,
 				1B6AFABF2ACDBF3800B8504D /* AppDelegate.swift in Sources */,
 				1BCB8A122AD14FBF009A4AB8 /* SignInState.swift in Sources */,
 				1B6AFAC12ACDBF3800B8504D /* SceneDelegate.swift in Sources */,
@@ -383,6 +406,7 @@
 				1B199B7F2B0F98D300E47397 /* SignUpResponse.swift in Sources */,
 				1B3617E42AED8D5D006F4710 /* HomeViewController.swift in Sources */,
 				1BCB8A102AD074E4009A4AB8 /* SignInViewModel.swift in Sources */,
+				1B199B842B10259500E47397 /* SignInResponse.swift in Sources */,
 				1B2B72EF2AFA9D0F00A16D9B /* Strings.swift in Sources */,
 				1B199B7D2B0EF22D00E47397 /* SignUpResponseError.swift in Sources */,
 			);

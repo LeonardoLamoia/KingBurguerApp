@@ -223,6 +223,13 @@ extension SignInViewController: TextFieldDelegate {
         
         // e-mail e password precisam ser validos
         self.send.enable((SignInForm.email.rawValue & self.bitmaskResult != 0) && (SignInForm.password.rawValue & self.bitmaskResult != 0))
+        
+        if bitmask == SignInForm.email.rawValue {
+            viewModel?.email = text
+        }
+        else if bitmask == SignInForm.password.rawValue {
+            viewModel?.password = text
+        }
     }
     
 }
@@ -240,11 +247,13 @@ extension SignInViewController: SignInViewModelDelegate {
             send.startLoading(true)
             break
         case .goToHome:
+            send.startLoading(false)
             // navegar para a tela princiapl
             viewModel?.goToHome()
             break
         case .error(let msg):
-            let alert = UIAlertController(title: "Titulo", message: msg, preferredStyle: .alert)
+            self.send.startLoading(false)
+            let alert = UIAlertController(title: "KingBurguer", message: msg, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
             self.present(alert, animated: true)
             

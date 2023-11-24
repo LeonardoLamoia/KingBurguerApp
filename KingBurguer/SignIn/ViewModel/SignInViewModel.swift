@@ -15,6 +15,9 @@ protocol SignInViewModelDelegate {
 
 class SignInViewModel {
     
+    var email = ""
+    var password = ""
+    
     var delegate: SignInViewModelDelegate?
     var coordinator: SignInCoordinator?
     
@@ -28,9 +31,16 @@ class SignInViewModel {
     func send() {
         state = .loading
         
-        // código de delay, (esperar 2 segundos) - simulando uma latencia de rede
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.state = .goToHome
+        WebServiceAPI.shared.login(request: SignInRequest(username: email,
+                                                          password: password)) { response, error in
+            DispatchQueue.main.async {
+                if let errorMessage = error {
+                    self.state = .error(errorMessage)
+                } else {
+                    print(response)
+                    self.state = .goToHome
+                }
+            }
         }
     }
     

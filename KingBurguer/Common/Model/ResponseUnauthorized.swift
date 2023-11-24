@@ -1,16 +1,15 @@
 //
-//  SignUpResponseUnauthorized.swift
+//  ResponseUnauthorized.swift
 //  KingBurguer
 //
-//  Created by Leonardo Lamoia on 22/11/23.
+//  Created by Leonardo Lamoia on 23/11/23.
 //
 
 import Foundation
 
-
-struct SignUpResponseUnauthorized: Decodable {
+struct ResponseUnauthorized: Decodable {
     
-    let detail: SignUpResponseDetail
+    let detail: ResponseDetail
     
     enum CodingKeys: String, CodingKey {
         case detail
@@ -18,7 +17,7 @@ struct SignUpResponseUnauthorized: Decodable {
     
 }
 
-struct SignUpResponseDetail: Decodable {
+struct ResponseDetail: Decodable {
     
     let message: String
     
