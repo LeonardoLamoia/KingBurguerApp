@@ -30,6 +30,13 @@ class SignUpViewModel {
             delegate?.viewModelDidChanged(state: state)
         }
     }
+    
+    private let interactor: SignUpInteractor
+    
+    init(interactor: SignUpInteractor) {
+        self.interactor = interactor
+    }
+    
     // Informa: mudou o estado
     func send() {
         state = .loading
@@ -49,7 +56,7 @@ class SignUpViewModel {
         let documentFormatted = document.digits
         
         // MAIN-THREAD
-        WebServiceAPI.shared.createUser(request: SignUpRequest(
+        interactor.createUser(request: SignUpRequest(
             name: name,
             email: email,
             password: password,

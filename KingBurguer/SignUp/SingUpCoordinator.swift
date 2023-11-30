@@ -20,7 +20,9 @@ class SignUpCoordinator {
     }
     
     func start() {
-        let viewModel = SignUpViewModel()
+        let interactor = SignUpInteractor()
+        
+        let viewModel = SignUpViewModel(interactor: interactor)
         viewModel.coordinator = self
         
         let signUpVC = SignUpViewController()
