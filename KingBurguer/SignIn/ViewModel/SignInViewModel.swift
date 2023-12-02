@@ -27,11 +27,17 @@ class SignInViewModel {
             delegate?.viewModelDidChanged(state: state)
         }
     }
+    
+    private let interactor: SignInInteractor
+    
+    init(interactor: SignInInteractor) {
+        self.interactor = interactor
+    }
     // Informa: mudou o estado
     func send() {
         state = .loading
         
-        WebServiceAPI.shared.login(request: SignInRequest(username: email,
+       interactor.login(request: SignInRequest(username: email,
                                                           password: password)) { response, error in
             DispatchQueue.main.async {
                 if let errorMessage = error {

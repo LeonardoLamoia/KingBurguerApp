@@ -20,8 +20,9 @@ class SignInCoordinator {
     }
     
     func start() {
+        let interactor = SignInInteractor()
         
-        let viewModel = SignInViewModel()
+        let viewModel = SignInViewModel(interactor: interactor)
         viewModel.coordinator = self
         
         let signInVC = SignInViewController()

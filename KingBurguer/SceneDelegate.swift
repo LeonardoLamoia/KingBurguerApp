@@ -11,12 +11,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
+    let local: LocalDataSource = .shared
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
+        
+        if let userAuth = local.getUserAuth() {
+            print("LOADING: UserAuth \(userAuth)")
+        }
+          
         
         let signInCoordinator = SignInCoordinator(window: window)
         signInCoordinator.start()
