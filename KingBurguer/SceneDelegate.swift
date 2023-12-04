@@ -13,6 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     let local: LocalDataSource = .shared
     
+    var homeCoordinator: HomeCoordinator!
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -20,14 +22,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         if let userAuth = local.getUserAuth() {
-            print("LOADING: UserAuth \(userAuth)")
+            if Date().timeIntervalSince1970 > Double(userAuth.expiresSeconds) {
+                print("EXPIROU!!!")
+                // fazer o refresh aqui...
+                let signInCoordinator = SignInCoordinator(window: window)
+                signInCoordinator.start()
+            } else {
+                homeCoordinator = HomeCoordinator(window: window)
+                homeCoordinator.start()
+            }
+        } else {
+            let signInCoordinator = SignInCoordinator(window: window)
+            signInCoordinator.start()
         }
-          
+        window?.makeKeyAndVisible()
         
-        let signInCoordinator = SignInCoordinator(window: window)
-        signInCoordinator.start()
-        
-     
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

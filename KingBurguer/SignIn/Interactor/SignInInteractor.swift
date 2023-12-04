@@ -20,7 +20,7 @@ class SignInInteractor {
             if let r = response {
                 
                 let userAuth = UserAuth(accessToken: r.accessToken,                                        refreshToken: r.refreshToken,
-                                        expiresSeconds: r.expiresSeconds,
+                                        expiresSeconds: Int(Date().timeIntervalSince1970 + Double( r.expiresSeconds)),
                                         tokenType: r.tokenType)
                 self.local.insetUserAuth(userAuth: userAuth)
             }

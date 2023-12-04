@@ -20,53 +20,5 @@
             landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2546EC55-33DE-463D-B512-D6F8A2937492"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KingBurguer/SignIn/Interactor/SignInInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "login(request:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2546EC55-33DE-463D-B512-D6F8A2937492 - de4f0c83d2917ac4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;KingBurguer.SignInResponse&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in KingBurguer.SignInInteractor.login(request: KingBurguer.SignInRequest, completion: (Swift.Optional&lt;KingBurguer.SignInResponse&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "KingBurguer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/leonardolamoia/MeusProjetos/Swift/KingBurguer/KingBurguer/SignIn/Interactor/SignInInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "2546EC55-33DE-463D-B512-D6F8A2937492 - de4f0c83d2917ac4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;KingBurguer.SignInResponse&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in KingBurguer.SignInInteractor.login(request: KingBurguer.SignInRequest, completion: (Swift.Optional&lt;KingBurguer.SignInResponse&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "KingBurguer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/leonardolamoia/MeusProjetos/Swift/KingBurguer/KingBurguer/SignIn/Interactor/SignInInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "20"
-                  endingLineNumber = "20"
-                  offsetFromSymbolStart = "152">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

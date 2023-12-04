@@ -34,7 +34,7 @@ class SignInCoordinator {
         navigationController.pushViewController(signInVC, animated: true)
         
         window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        
     }
     
     func signUp() {
