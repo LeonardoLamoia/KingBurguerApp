@@ -20,6 +20,14 @@ class WebServiceAPI {
     enum Endpoint: String {
         case createUser = "/users"
         case login = "/auth/login"
+        case refreshToken = "/auth/refresh-token"
+    }
+    
+    enum Method: String {
+        case post
+        case put
+        case get
+        case delete
     }
     
     enum NetworkError {
@@ -47,7 +55,7 @@ class WebServiceAPI {
     
     
     
-    func call<R: Encodable>(path: Endpoint, body: R, completion: @escaping (Result) -> Void) {
+    func call<R: Encodable>(path: Endpoint, body: R, method: Method, accessToken: String? = nil, completion: @escaping (Result) -> Void) {
         
         
         do {
@@ -56,11 +64,13 @@ class WebServiceAPI {
             
             guard var request = completeUrl(path: path) else { return }
             
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = method.rawValue.uppercased();           request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "accept")
             request.setValue(WebServiceAPI.apiKey, forHTTPHeaderField: "x-secret-key")
             
+            if let accessToken = accessToken {
+                request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            }
             
             request.httpBody = jsonRequest
             

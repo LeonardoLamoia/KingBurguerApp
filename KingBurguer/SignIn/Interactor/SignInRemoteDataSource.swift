@@ -14,7 +14,7 @@ class SignInRemoteDataSource {
     static let shared = SignInRemoteDataSource()
     
     func login(request: SignInRequest, completion: @escaping (SignInResponse?, String?) -> Void) {
-        WebServiceAPI.shared.call(path: .login, body: request) { result in
+        WebServiceAPI.shared.call(path: .login, body: request, method: .post) { result in
             switch result {
             case .success(let data):
                 guard let data = data else { return }

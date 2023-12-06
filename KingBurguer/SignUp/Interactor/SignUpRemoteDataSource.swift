@@ -13,7 +13,7 @@ class SignUpRemoteDataSource {
     
     
     func createUser(request: SignUpRequest, completion: @escaping (Bool?, String?) -> Void ){
-        WebServiceAPI.shared.call(path: .createUser, body: request) { result in
+        WebServiceAPI.shared.call(path: .createUser, body: request, method: .post) { result in
             switch result {
             case .success(let data):
                 guard let data = data else { return }

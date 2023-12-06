@@ -15,6 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var homeCoordinator: HomeCoordinator!
     
+    private let interactor = SplashInteractor()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -25,8 +27,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if Date().timeIntervalSince1970 > Double(userAuth.expiresSeconds) {
                 print("EXPIROU!!!")
                 // fazer o refresh aqui...
-                let signInCoordinator = SignInCoordinator(window: window)
-                signInCoordinator.start()
+                
+                interactor.login(request: SplashRequest(refreshToken: userAuth.refreshToken)) { response, error in
+                    DispatchQueue.main.async {
+                        if error {
+                            let signInCoordinator = SignInCoordinator(window: self.window)
+                            signInCoordinator.start()
+                        } else {
+                            self.homeCoordinator = HomeCoordinator(window: self.window)
+                            self.homeCoordinator.start()
+                        }
+                    }
+                }
+              
             } else {
                 homeCoordinator = HomeCoordinator(window: window)
                 homeCoordinator.start()
