@@ -18,6 +18,8 @@ class SplashInteractor {
             completion(nil, true)
             return
         }
+        print(request)
+        print(accessToken)
         remote.login(request: request, accessToken: accessToken) { response, error in
             
             if let r = response {

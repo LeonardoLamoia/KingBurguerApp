@@ -24,6 +24,12 @@ class FeedViewController: UIViewController {
         return tv
     }()
     
+    var viewModel:FeedViewModel? {
+        didSet {
+            viewModel?.delegate = self
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +45,8 @@ class FeedViewController: UIViewController {
         homeFeedTable.dataSource = self
         
         configureNavBar()
+        
+        viewModel?.fetch()
     }
     
     override func viewDidLayoutSubviews() {
@@ -106,10 +114,26 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as! FeedTableViewCell
         
-//        cell.textLabel?.text = "Opa bebê \(indexPath.section) \(indexPath.row)"
+        //        cell.textLabel?.text = "Opa bebê \(indexPath.section) \(indexPath.row)"
         
         return cell
     }
     
     
+}
+
+extension FeedViewController: FeedViewModelDelegate {
+    func viewModelDidChanged(state: FeedState) {
+        switch(state) {
+        case .loading:
+            print("loading..")
+            break
+        case .success:
+            print("sucesso..")
+            break
+        case .error(let msg):
+            print("error..")
+            break
+        }
+    }
 }

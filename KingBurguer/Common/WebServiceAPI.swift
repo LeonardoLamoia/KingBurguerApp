@@ -21,6 +21,7 @@ class WebServiceAPI {
         case createUser = "/users"
         case login = "/auth/login"
         case refreshToken = "/auth/refresh-token"
+        case feed = "/feed"
     }
     
     enum Method: String {
@@ -55,12 +56,10 @@ class WebServiceAPI {
     
     
     
-    func call<R: Encodable>(path: Endpoint, body: R, method: Method, accessToken: String? = nil, completion: @escaping (Result) -> Void) {
+    func call<R: Encodable>(path: Endpoint, body: R?, method: Method, accessToken: String? = nil, completion: @escaping (Result) -> Void) {
         
         
         do {
-            let jsonRequest = try JSONEncoder().encode(body)
-            
             
             guard var request = completeUrl(path: path) else { return }
             
@@ -71,9 +70,10 @@ class WebServiceAPI {
             if let accessToken = accessToken {
                 request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             }
-            
-            request.httpBody = jsonRequest
-            
+            if let body = body {
+                let jsonRequest = try JSONEncoder().encode(body)
+                request.httpBody = jsonRequest
+            }
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 // assincrono
