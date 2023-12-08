@@ -13,7 +13,16 @@ class FeedViewController: UIViewController {
     // 2 . definir o dataSource (ViewController - que administra fonte de dados)
     // 3 . definir métodos obrigatórios ( numberOfRowsInSection / cellForRowAt )
     
-    let sections = ["Mais Vendidos", "Vegano", "Bovino", "Sobremesas"]
+    var sections: [CategoryResponse] = []
+    
+    private let progress: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView()
+        
+        aiv.backgroundColor = .systemBackground
+        aiv.startAnimating()
+        
+        return aiv
+    }()
     
     private let homeFeedTable: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
@@ -36,6 +45,7 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(homeFeedTable)
+        view.addSubview(progress)
         
         let headerView = HighlightView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
         headerView.backgroundColor = .orange
@@ -52,6 +62,7 @@ class FeedViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
+        progress.frame = view.bounds
     }
     
     
@@ -103,7 +114,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         let label = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.bounds.width, height: 40))
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textColor = .label
-        label.text = sections[section].uppercased()
+        label.text = sections[section].name
         
         view.addSubview(label)
         
@@ -126,13 +137,15 @@ extension FeedViewController: FeedViewModelDelegate {
     func viewModelDidChanged(state: FeedState) {
         switch(state) {
         case .loading:
-            print("loading..")
             break
-        case .success:
-            print("sucesso..")
+        case .success (let response):
+            progress.stopAnimating()
+            self.sections = response.categories
+            self.homeFeedTable.reloadData()
             break
         case .error(let msg):
-            print("error..")
+            progress.stopAnimating()
+            self.homeFeedTable.reloadData()
             break
         }
     }

@@ -36,9 +36,8 @@ class FeedViewModel {
             DispatchQueue.main.async {
                 if let errorMessage = error {
                     self.state = .error(errorMessage)
-                } else {
-                    print(response)
-//                    self.state = .goToHome
+                } else if let response = response {
+                    self.state = .success(response)
                 }
             }
         }
