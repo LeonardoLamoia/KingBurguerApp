@@ -125,7 +125,8 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as! FeedTableViewCell
         
-        //        cell.textLabel?.text = "Opa bebê \(indexPath.section) \(indexPath.row)"
+//        cell.products.removeAll()
+        cell.products.append(contentsOf: sections[indexPath.section].products)
         
         return cell
     }
