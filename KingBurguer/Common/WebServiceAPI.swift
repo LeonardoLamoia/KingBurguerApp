@@ -22,6 +22,7 @@ class WebServiceAPI {
         case login = "/auth/login"
         case refreshToken = "/auth/refresh-token"
         case feed = "/feed"
+        case highlight = "/highlight"
     }
     
     enum Method: String {

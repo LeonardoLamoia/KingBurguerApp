@@ -10,10 +10,10 @@ import UIKit
 class HighlightView: UIView {
     
     
-    private let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let iv = UIImageView()
         
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleAspectFit
         iv.image = UIImage(named: "highlight")
         iv.clipsToBounds = true
         
@@ -32,7 +32,7 @@ class HighlightView: UIView {
         return btn
     }()
     
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(imageView)
@@ -57,10 +57,10 @@ class HighlightView: UIView {
     
     private func configConstraints() {
         NSLayoutConstraint.activate([
-        
+            
             moreButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -8),
-            moreButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50)
-        
+            moreButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20)
+            
         ])
     }
     

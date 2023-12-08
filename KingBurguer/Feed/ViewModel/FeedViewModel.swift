@@ -43,6 +43,18 @@ class FeedViewModel {
         }
     }
     
+    func fetchHighlight() {
+        interactor.fetchHighlight() { response, error in
+             DispatchQueue.main.async {
+                 if let errorMessage = error {
+                     self.state = .error(errorMessage)
+                 } else if let response = response {
+                     self.state = .successHighlight(response)
+                 }
+             }
+         }
+    }
+    
 //    func goToSignUp() {
 //        coordinator?.signUp()
 //    }

@@ -15,6 +15,8 @@ class FeedViewController: UIViewController {
     
     var sections: [CategoryResponse] = []
     
+    private var headerView: HighlightView!
+    
     private let progress: UIActivityIndicatorView = {
         let aiv = UIActivityIndicatorView()
         
@@ -47,7 +49,7 @@ class FeedViewController: UIViewController {
         view.addSubview(homeFeedTable)
         view.addSubview(progress)
         
-        let headerView = HighlightView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        headerView = HighlightView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 210))
         headerView.backgroundColor = .orange
         homeFeedTable.tableHeaderView = headerView
         
@@ -57,6 +59,7 @@ class FeedViewController: UIViewController {
         configureNavBar()
         
         viewModel?.fetch()
+        viewModel?.fetchHighlight()
     }
     
     override func viewDidLayoutSubviews() {
@@ -144,6 +147,12 @@ extension FeedViewController: FeedViewModelDelegate {
             self.sections = response.categories
             self.homeFeedTable.reloadData()
             break
+            
+        case .successHighlight(let response):
+            guard let url = URL(string: response.pictureUrl) else { break }
+            headerView.imageView.sd_setImage(with: url)
+            break
+            
         case .error(let msg):
             progress.stopAnimating()
             self.homeFeedTable.reloadData()
