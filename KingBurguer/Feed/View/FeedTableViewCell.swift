@@ -19,7 +19,7 @@ class FeedTableViewCell: UITableViewCell {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 140, height: 180)
+        layout.itemSize = CGSize(width: 140, height: 220)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: FeedCollectionViewCell.identifier)
         return cv
