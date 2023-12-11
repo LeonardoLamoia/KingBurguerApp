@@ -55,11 +55,7 @@ extension FeedTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCollectionViewCell.identifier, for: indexPath) as! FeedCollectionViewCell
         
-        let product = products[indexPath.row]
-        
-        if let url = URL(string: product.pictureUrl) {
-            cell.imageView.sd_setImage(with: url)
-        }
+        cell.product = products[indexPath.row]
         
         return cell
     }

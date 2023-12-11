@@ -11,6 +11,21 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "FeedCollectionViewCell"
     
+    var product: ProductResponse! {
+        willSet {
+            if let url = URL(string: newValue.pictureUrl) {
+                imageView.sd_setImage(with: url)
+            }
+            nameLabel.text = newValue.name
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.locale = Locale(identifier: "PT-BR")
+            
+            priceLabel.text = formatter.string(from: newValue.price as NSNumber)
+        }
+    }
+    
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
