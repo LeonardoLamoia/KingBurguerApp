@@ -46,6 +46,9 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
+        navigationController?.title = "Inicio"
+        navigationController?.tabBarItem.image = UIImage(systemName: "house")
+        
         view.addSubview(homeFeedTable)
         view.addSubview(progress)
         

@@ -16,7 +16,7 @@ class FeedViewModel {
     
     
     var delegate: FeedViewModelDelegate?
-//    var coordinator: SignInCoordinator?
+    var coordinator: FeedCoordinator?
     
     
     var state: FeedState = .loading {

@@ -13,29 +13,28 @@ class HomeViewController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        let feedInteractor = FeedInteractor()
-        let feedViewModel = FeedViewModel(interactor: feedInteractor)
-        
-        let feedVC = FeedViewController()
-        feedVC.viewModel = feedViewModel
-        
-        let navFeedVC = UINavigationController(rootViewController: feedVC)
-        let couponVC = UINavigationController(rootViewController: CouponViewController())
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
+//        let feedInteractor = FeedInteractor()
+//        let feedViewModel = FeedViewModel(interactor: feedInteractor)
+//        
+//        let feedVC = FeedViewController()
+//        feedVC.viewModel = feedViewModel
         
         
-        navFeedVC.title = "Inicio"
-        couponVC.title = "Cupons"
-        profileVC.title = "Perfil"
+//        let couponVC = UINavigationController(rootViewController: CouponViewController())
+//        let profileVC = UINavigationController(rootViewController: ProfileViewController())
+        
+        
+        
+//        couponVC.title = "Cupons"
+//        profileVC.title = "Perfil"
         
         tabBar.tintColor = .red
         
-        navFeedVC.tabBarItem.image = UIImage(systemName: "house")
-        couponVC.tabBarItem.image = UIImage(systemName: "arrow.down.to.line")
-        profileVC.tabBarItem.image = UIImage(systemName: "person.circle")
+        
+//        couponVC.tabBarItem.image = UIImage(systemName: "arrow.down.to.line")
+//        profileVC.tabBarItem.image = UIImage(systemName: "person.circle")
         
         
         
-        setViewControllers([navFeedVC, couponVC, profileVC], animated: true)
     }
 }
