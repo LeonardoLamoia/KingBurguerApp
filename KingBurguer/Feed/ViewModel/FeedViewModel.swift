@@ -55,6 +55,10 @@ class FeedViewModel {
          }
     }
     
+    func goToProductDetail(id: Int) {
+        coordinator?.goToProductDetail(id: id)
+    }
+    
 //    func goToSignUp() {
 //        coordinator?.signUp()
 //    }

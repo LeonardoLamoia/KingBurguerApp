@@ -31,4 +31,10 @@ class FeedCoordinator {
         navigationController.pushViewController(signUpVC, animated: true)
     }
     
+    func goToProductDetail(id: Int) {
+        let coordinator = ProductDetailCoordinator(navigationController, id: id)
+        coordinator.parentCoordinator = self
+        coordinator.start()
+    }
+    
 }

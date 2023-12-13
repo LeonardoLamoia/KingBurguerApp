@@ -8,12 +8,18 @@
 import UIKit
 import SDWebImage
 
+
+protocol FeedCollectionViewDelegate {
+    func itemSelected(productId: Int)
+}
+
+
 class FeedTableViewCell: UITableViewCell {
-    
     
     static let identifier = "FeedTableViewCell"
     
     var products: [ProductResponse] = []
+    var delegate: FeedCollectionViewDelegate?
     
     
     private let collectionView: UICollectionView = {
@@ -32,6 +38,7 @@ class FeedTableViewCell: UITableViewCell {
         contentView.addSubview(collectionView)
         
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     override func layoutSubviews() {
@@ -47,7 +54,7 @@ class FeedTableViewCell: UITableViewCell {
 
 
 
-extension FeedTableViewCell: UICollectionViewDataSource {
+extension FeedTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
     }
@@ -60,5 +67,7 @@ extension FeedTableViewCell: UICollectionViewDataSource {
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.itemSelected(productId: products[indexPath.row].id)
+    }
 }

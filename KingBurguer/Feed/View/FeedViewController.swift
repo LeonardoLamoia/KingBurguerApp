@@ -133,6 +133,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
 //        cell.products.removeAll()
         cell.products.append(contentsOf: sections[indexPath.section].products)
+        cell.delegate = self
         
         return cell
     }
@@ -140,7 +141,11 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension FeedViewController: FeedViewModelDelegate {
+extension FeedViewController: FeedViewModelDelegate, FeedCollectionViewDelegate {
+    func itemSelected(productId: Int) {
+        viewModel?.goToProductDetail(id: productId)
+    }
+    
     func viewModelDidChanged(state: FeedState) {
         switch(state) {
         case .loading:
