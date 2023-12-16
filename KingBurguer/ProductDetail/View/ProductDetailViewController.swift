@@ -101,8 +101,16 @@ class ProductDetailViewController: UIViewController {
         return lb
     }()
     
+    var viewModel: ProductDetailViewModel? {
+        didSet {
+            viewModel?.delegate = self
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel?.fetch(id: id)
         
     }
     
@@ -182,4 +190,24 @@ class ProductDetailViewController: UIViewController {
         
     }
     
+}
+
+extension ProductDetailViewController: ProductDetailViewModelDelegate {
+  
+    
+    func viewModelDidChanged(state: ProductDetailState) {
+        switch(state) {
+        case .loading:
+            break
+        case .success (let response):
+            print(response)
+//            progress.stopAnimating()
+            break
+            
+            
+        case .error(let msg):
+//            progress.stopAnimating()
+            break
+        }
+    }
 }

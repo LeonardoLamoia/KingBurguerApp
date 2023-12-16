@@ -23,6 +23,7 @@ class WebServiceAPI {
         case refreshToken = "/auth/refresh-token"
         case feed = "/feed"
         case highlight = "/highlight"
+        case productDetail = "/products/%d"
     }
     
     enum Method: String {
@@ -46,8 +47,8 @@ class WebServiceAPI {
     }
     
     
-    private func completeUrl(path: Endpoint) -> URLRequest? {
-        let endpoint = "\(WebServiceAPI.baseURL)\(path.rawValue)"
+    private func completeUrl(path: String) -> URLRequest? {
+        let endpoint = "\(WebServiceAPI.baseURL)\(path)"
         guard let url = URL(string: endpoint) else {
             print("ERROR: URL \(endpoint) malformed!")
             return nil
@@ -55,9 +56,18 @@ class WebServiceAPI {
         return URLRequest(url: url)
     }
     
+    // possibilidade de passar uma url dinamico (PURA)  exemplo: /products/1231
+    func call(path: String, method: Method, accessToken: String? = nil, completion: @escaping (Result) -> Void) {
+        makeRequest(path: path, body: nil, method: method, accessToken: accessToken, completion: completion)
+    }
     
-    
+    // possibilidade de passar uma url por ENDPOINT + body
     func call<R: Encodable>(path: Endpoint, body: R?, method: Method, accessToken: String? = nil, completion: @escaping (Result) -> Void) {
+        makeRequest(path: path.rawValue, body: body, method: method, accessToken: accessToken, completion: completion)
+    }
+    
+    
+    func makeRequest(path: String, body: Encodable?, method: Method, accessToken: String? = nil, completion: @escaping (Result) -> Void) {
         
         
         do {

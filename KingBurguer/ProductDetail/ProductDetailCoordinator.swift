@@ -21,14 +21,14 @@ class ProductDetailCoordinator {
     }
     
     func start() {
-//        let interactor = SignUpInteractor()
+        let interactor = ProductDetailInteractor()
         
-//        let viewModel = SignUpViewModel(interactor: interactor)
-//        viewModel.coordinator = self
+        let viewModel = ProductDetailViewModel(interactor: interactor)
+        viewModel.coordinator = self
         
         let vc = ProductDetailViewController()
         vc.id = id
-//        signUpVC.viewModel = viewModel
+        vc.viewModel = viewModel
         
         navigationController.pushViewController(vc, animated: true)
     }
