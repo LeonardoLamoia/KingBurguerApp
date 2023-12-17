@@ -7,6 +7,11 @@
 
 import UIKit
 
+
+protocol HighlightViewDelegate {
+    func HighlightSelected(productId: Int)
+}
+
 class HighlightView: UIView {
     
     
@@ -20,6 +25,10 @@ class HighlightView: UIView {
         return iv
     }()
     
+    var productId: Int!
+    
+    var delegate: HighlightViewDelegate?
+    
     
     private let moreButton: UIButton = {
         let btn = UIButton()
@@ -29,9 +38,14 @@ class HighlightView: UIView {
         btn.layer.cornerRadius = 5
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        btn.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return btn
     }()
     
+    
+    @objc func buttonTapped() {
+        delegate?.HighlightSelected(productId: productId)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

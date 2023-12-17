@@ -56,6 +56,7 @@ class FeedViewController: UIViewController {
         headerView.backgroundColor = .orange
         homeFeedTable.tableHeaderView = headerView
         
+        headerView.delegate = self
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
         
@@ -141,7 +142,12 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension FeedViewController: FeedViewModelDelegate, FeedCollectionViewDelegate {
+extension FeedViewController: FeedViewModelDelegate, FeedCollectionViewDelegate, HighlightViewDelegate {
+    
+    func HighlightSelected(productId: Int) {
+        viewModel?.goToProductDetail(id: productId)
+    }
+    
     func itemSelected(productId: Int) {
         viewModel?.goToProductDetail(id: productId)
     }
@@ -159,6 +165,7 @@ extension FeedViewController: FeedViewModelDelegate, FeedCollectionViewDelegate 
         case .successHighlight(let response):
             guard let url = URL(string: response.pictureUrl) else { break }
             headerView.imageView.sd_setImage(with: url)
+            headerView.productId = response.productId
             break
             
         case .error(let msg):
