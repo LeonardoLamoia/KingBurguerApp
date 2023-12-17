@@ -43,6 +43,8 @@
 		1B5E84972B2E2B4D00E86394 /* ProductDetailRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84962B2E2B4D00E86394 /* ProductDetailRemoteDataSource.swift */; };
 		1B5E84992B2F326300E86394 /* Doubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84982B2F326300E86394 /* Doubles.swift */; };
 		1B5E849B2B2F7EDB00E86394 /* CouponResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E849A2B2F7EDB00E86394 /* CouponResponse.swift */; };
+		1B5E849D2B2F8CC200E86394 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E849C2B2F8CC200E86394 /* ProfileCoordinator.swift */; };
+		1B5E849F2B2F91AC00E86394 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E849E2B2F91AC00E86394 /* ProfileCell.swift */; };
 		1B6AFABF2ACDBF3800B8504D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */; };
 		1B6AFAC12ACDBF3800B8504D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */; };
 		1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC22ACDBF3800B8504D /* ViewController.swift */; };
@@ -104,6 +106,8 @@
 		1B5E84962B2E2B4D00E86394 /* ProductDetailRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRemoteDataSource.swift; sourceTree = "<group>"; };
 		1B5E84982B2F326300E86394 /* Doubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doubles.swift; sourceTree = "<group>"; };
 		1B5E849A2B2F7EDB00E86394 /* CouponResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponResponse.swift; sourceTree = "<group>"; };
+		1B5E849C2B2F8CC200E86394 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		1B5E849E2B2F91AC00E86394 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		1B6AFABB2ACDBF3800B8504D /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -381,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				1B7DEABF2AF55886004A5213 /* View */,
+				1B5E849C2B2F8CC200E86394 /* ProfileCoordinator.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				1B7DEAC42AF558E8004A5213 /* ProfileViewController.swift */,
+				1B5E849E2B2F91AC00E86394 /* ProfileCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				1B6AFAD52ACDCAF400B8504D /* SignInViewController.swift in Sources */,
 				1B80E25F2B19744B000D3304 /* LocalDataSource.swift in Sources */,
 				1B5E84992B2F326300E86394 /* Doubles.swift in Sources */,
+				1B5E849D2B2F8CC200E86394 /* ProfileCoordinator.swift in Sources */,
 				1B3CBF222B22BD1C00DBE990 /* FeedViewModel.swift in Sources */,
 				1B7DEAC92AF57213004A5213 /* FeedTableViewCell.swift in Sources */,
 				1B7DEAC72AF558FD004A5213 /* CouponViewController.swift in Sources */,
@@ -578,6 +585,7 @@
 				1B3CBF352B23A57000DBE990 /* HighlightResponse.swift in Sources */,
 				1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */,
 				1B3617E12AED8D1B006F4710 /* HomeCoordinator.swift in Sources */,
+				1B5E849F2B2F91AC00E86394 /* ProfileCell.swift in Sources */,
 				1B80E25B2B18ADE9000D3304 /* SignInInteractor.swift in Sources */,
 				1B3CBF1F2B1E0F7D00DBE990 /* SplashRemoteDataSource.swift in Sources */,
 				1B7DEAC32AF558C7004A5213 /* FeedViewController.swift in Sources */,

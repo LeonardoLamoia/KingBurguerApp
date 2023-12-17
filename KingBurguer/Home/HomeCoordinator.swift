@@ -12,6 +12,7 @@ class HomeCoordinator {
     private let window: UIWindow?
     
     let navFeedVC = UINavigationController()
+    let navProfileVC = UINavigationController()
     
     init(window: UIWindow?) {
         self.window = window
@@ -23,7 +24,10 @@ class HomeCoordinator {
         let feedCoordinator = FeedCoordinator(navFeedVC)
         feedCoordinator.start()
         
-        homeVC.setViewControllers([navFeedVC], animated: true)
+        let profileCoordinator = ProfileCoordinator(navProfileVC)
+        profileCoordinator.start()
+        
+        homeVC.setViewControllers([navFeedVC, navProfileVC], animated: true)
         
         // aqui é onde acontece a trocar de navigation-controller
         window?.rootViewController = homeVC
