@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProductDetailViewController: UIViewController {
     
@@ -15,6 +16,13 @@ class ProductDetailViewController: UIViewController {
         let sc = UIScrollView()
         sc.translatesAutoresizingMaskIntoConstraints = false
         return sc
+    }()
+    
+    let progress: UIActivityIndicatorView = {
+        let v = UIActivityIndicatorView()
+        v.backgroundColor = .systemBackground
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
     }()
     
     let container: UIStackView = {
@@ -30,8 +38,6 @@ class ProductDetailViewController: UIViewController {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.image = UIImage(named: "logo")
-        iv.backgroundColor = .red
         return iv
     }()
     
@@ -60,8 +66,6 @@ class ProductDetailViewController: UIViewController {
         lb.layer.cornerRadius = 10
         lb.clipsToBounds = true
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Combo XPTO"
-        lb.text = " R$ 29,90 "
         return lb
     }()
     
@@ -84,19 +88,6 @@ class ProductDetailViewController: UIViewController {
         lb.numberOfLines = 0
         lb.sizeToFit()
         lb.font = .systemFont(ofSize: 16.0)
-        lb.text = """
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham
-
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham
-
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham
-
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham
-       
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham
-
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham
-"""
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()
@@ -144,6 +135,7 @@ class ProductDetailViewController: UIViewController {
         
         view.addSubview(scroll)
         view.addSubview(button)
+        view.addSubview(progress)
     }
     
     
@@ -159,11 +151,11 @@ class ProductDetailViewController: UIViewController {
             scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             
-            container.widthAnchor.constraint(equalTo: scroll.widthAnchor),
+//            container.widthAnchor.constraint(equalTo: scroll.widthAnchor),
             container.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             container.topAnchor.constraint(equalTo: sl.topAnchor),
-            container.leadingAnchor.constraint(equalTo: sl.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: sl.trailingAnchor),
+            container.leadingAnchor.constraint(equalTo: sl.leadingAnchor, constant: 20),
+            container.trailingAnchor.constraint(equalTo: sl.trailingAnchor, constant: -20),
             container.bottomAnchor.constraint(equalTo: sl.bottomAnchor),
             
             
@@ -183,7 +175,14 @@ class ProductDetailViewController: UIViewController {
             
             button.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            
+            progress.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            progress.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            progress.topAnchor.constraint(equalTo: view.topAnchor),
+            progress.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             
         ])
         
@@ -193,20 +192,30 @@ class ProductDetailViewController: UIViewController {
 }
 
 extension ProductDetailViewController: ProductDetailViewModelDelegate {
-  
+    
     
     func viewModelDidChanged(state: ProductDetailState) {
         switch(state) {
         case .loading:
+            progress.startAnimating()
             break
         case .success (let response):
-            print(response)
-//            progress.stopAnimating()
+            self.nameLbl.text = response.name
+            self.descLbl.text = response.description
+            
+            if let price = response.price.toCurrency() {
+                self.priceLbl.text = "  \(price)  "
+            }
+            
+            if let url = URL(string: response.pictureUrl) {
+                self.imageView.sd_setImage(with: url)
+            }
+            progress.stopAnimating()
             break
             
             
         case .error(let msg):
-//            progress.stopAnimating()
+            progress.stopAnimating()
             break
         }
     }

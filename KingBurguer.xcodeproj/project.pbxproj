@@ -41,6 +41,7 @@
 		1B5E84922B2E2A1900E86394 /* ProductDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84912B2E2A1900E86394 /* ProductDetailState.swift */; };
 		1B5E84952B2E2AD000E86394 /* ProductDatailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84942B2E2AD000E86394 /* ProductDatailInteractor.swift */; };
 		1B5E84972B2E2B4D00E86394 /* ProductDetailRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84962B2E2B4D00E86394 /* ProductDetailRemoteDataSource.swift */; };
+		1B5E84992B2F326300E86394 /* Doubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84982B2F326300E86394 /* Doubles.swift */; };
 		1B6AFABF2ACDBF3800B8504D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */; };
 		1B6AFAC12ACDBF3800B8504D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */; };
 		1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC22ACDBF3800B8504D /* ViewController.swift */; };
@@ -100,6 +101,7 @@
 		1B5E84912B2E2A1900E86394 /* ProductDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailState.swift; sourceTree = "<group>"; };
 		1B5E84942B2E2AD000E86394 /* ProductDatailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDatailInteractor.swift; sourceTree = "<group>"; };
 		1B5E84962B2E2B4D00E86394 /* ProductDetailRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRemoteDataSource.swift; sourceTree = "<group>"; };
+		1B5E84982B2F326300E86394 /* Doubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doubles.swift; sourceTree = "<group>"; };
 		1B6AFABB2ACDBF3800B8504D /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				1B2B72EE2AFA9D0F00A16D9B /* Strings.swift */,
 				1B2B72F02AFBC8A500A16D9B /* Mask.swift */,
 				1B93A4322AFD5673004AA245 /* WebServiceAPI.swift */,
+				1B5E84982B2F326300E86394 /* Doubles.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				1B5E84902B2E296E00E86394 /* ProductDetailViewModel.swift in Sources */,
 				1B6AFAD52ACDCAF400B8504D /* SignInViewController.swift in Sources */,
 				1B80E25F2B19744B000D3304 /* LocalDataSource.swift in Sources */,
+				1B5E84992B2F326300E86394 /* Doubles.swift in Sources */,
 				1B3CBF222B22BD1C00DBE990 /* FeedViewModel.swift in Sources */,
 				1B7DEAC92AF57213004A5213 /* FeedTableViewCell.swift in Sources */,
 				1B7DEAC72AF558FD004A5213 /* CouponViewController.swift in Sources */,

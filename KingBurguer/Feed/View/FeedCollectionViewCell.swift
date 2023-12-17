@@ -18,11 +18,9 @@ class FeedCollectionViewCell: UICollectionViewCell {
             }
             nameLabel.text = newValue.name
             
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .currency
-            formatter.locale = Locale(identifier: "PT-BR")
-            
-            priceLabel.text = formatter.string(from: newValue.price as NSNumber)
+            if let price = newValue.price.toCurrency() {
+                priceLabel.text = price
+            }
         }
     }
     

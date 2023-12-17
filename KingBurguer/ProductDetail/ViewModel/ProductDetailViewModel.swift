@@ -31,6 +31,7 @@ class ProductDetailViewModel {
     }
     // Informa: mudou o estado
     func fetch(id: Int) {
+        self.state = .loading
         interactor.fetch(id: id) { response, error in
             DispatchQueue.main.async {
                 if let errorMessage = error {
