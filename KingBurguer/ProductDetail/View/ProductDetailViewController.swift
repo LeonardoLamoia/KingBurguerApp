@@ -69,7 +69,7 @@ class ProductDetailViewController: UIViewController {
         return lb
     }()
     
-    let button: UIButton = {
+    lazy var button: UIButton = {
         let btn = UIButton()
         btn.setTitle("Resgatar Cupom", for: .normal)
         btn.layer.borderColor = UIColor.systemBackground.cgColor
@@ -78,6 +78,7 @@ class ProductDetailViewController: UIViewController {
         btn.layer.cornerRadius = 5
         btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(couponTapped), for: .touchUpInside)
         return btn
     }()
     
@@ -189,6 +190,10 @@ class ProductDetailViewController: UIViewController {
         
     }
     
+    @objc func couponTapped() {
+        viewModel?.createCoupon(id: id)
+    }
+    
 }
 
 extension ProductDetailViewController: ProductDetailViewModelDelegate {
@@ -213,6 +218,13 @@ extension ProductDetailViewController: ProductDetailViewModelDelegate {
             progress.stopAnimating()
             break
             
+        case .successCoupon(let response):
+            progress.stopAnimating()
+            
+            let alert = UIAlertController(title: "KingBurguer", message: "Cupom gerado: \(response.coupon)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            }))
+            self.present(alert, animated: true)
             
         case .error(let msg):
             progress.stopAnimating()

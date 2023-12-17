@@ -347,7 +347,7 @@ extension SignUpViewController: SignUpViewModelDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                 self.viewModel?.goToLogin()
             }))
-            self.viewModel?.goToLogin()
+            self.present(alert, animated: true)
             break
         case .error(let msg):
             send.startLoading(false)

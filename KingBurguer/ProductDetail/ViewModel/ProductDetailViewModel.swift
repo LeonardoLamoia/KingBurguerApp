@@ -29,6 +29,7 @@ class ProductDetailViewModel {
     init(interactor: ProductDetailInteractor) {
         self.interactor = interactor
     }
+    
     // Informa: mudou o estado
     func fetch(id: Int) {
         self.state = .loading
@@ -38,6 +39,20 @@ class ProductDetailViewModel {
                     self.state = .error(errorMessage)
                 } else if let response = response {
                     self.state = .success(response)
+                }
+            }
+        }
+    }
+    
+    
+    func createCoupon(id: Int) {
+        self.state = .loading
+        interactor.createCoupon(id: id) { response, error in
+            DispatchQueue.main.async {
+                if let errorMessage = error {
+                    self.state = .error(errorMessage)
+                } else if let response = response {
+                    self.state = .successCoupon(response)
                 }
             }
         }

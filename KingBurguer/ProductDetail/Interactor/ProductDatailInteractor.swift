@@ -24,4 +24,16 @@ class ProductDetailInteractor {
         
     }
     
+    
+    func createCoupon(id: Int, completion: @escaping (CouponResponse?, String?) -> Void ) {
+        let userAuth = local.getUserAuth()
+        guard let accessToken = userAuth?.accessToken else {
+            completion(nil, "Access token not found!")
+            return
+        }
+        
+        return remote.createCoupon(id: id, accessToken: accessToken, completion: completion)
+        
+    }
+    
 }
