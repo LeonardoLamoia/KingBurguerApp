@@ -25,6 +25,7 @@ class WebServiceAPI {
         case highlight = "/highlight"
         case productDetail = "/products/%d"
         case coupon = "/products/%d/coupon"
+        case me = "/users/me"
     }
     
     enum Method: String {

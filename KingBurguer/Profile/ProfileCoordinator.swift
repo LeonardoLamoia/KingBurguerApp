@@ -20,13 +20,13 @@ class ProfileCoordinator {
     }
     
     func start() {
-//        let interactor = FeedInteractor()
+        let interactor = ProfileInteractor()
         
-//        let viewModel = FeedViewModel(interactor: interactor)
-//        viewModel.coordinator = self
+        let viewModel = ProfileViewModel(interactor: interactor)
+        viewModel.coordinator = self
         
         let vc = ProfileViewController(style: .plain)
-//        signUpVC.viewModel = viewModel
+        vc.viewModel = viewModel
         
         navigationController.pushViewController(vc, animated: true)
     }
