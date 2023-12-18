@@ -12,6 +12,13 @@ class ProfileCell: UITableViewCell {
     
     static let identifier = "ProfileCell"
     
+    var data: (String, String)! {
+        willSet {
+            leftLabel.text = newValue.0
+            rightLabel.text = newValue.1
+        }
+    }
+    
     
     private let leftLabel: UILabel = {
         let lb = UILabel()

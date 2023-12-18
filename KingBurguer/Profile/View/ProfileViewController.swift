@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileViewController: UITableViewController {
     
+    var data: [ (String, String) ] = []
+    
     
     override init(style: UITableView.Style) {
         super.init(style: style)
@@ -47,7 +49,7 @@ class ProfileViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return data.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -55,7 +57,10 @@ class ProfileViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.identifier, for: indexPath) as! ProfileCell
+        
+        cell.data = data[indexPath.row]
+        
         cell.isUserInteractionEnabled = false
         return cell
     }
@@ -70,7 +75,27 @@ extension ProfileViewController: ProfileViewModelDelegate {
             break
             
         case .success(let response):
-            print(response)
+            
+            let doc = Mask(mask: "###.###.###-##").process(value: response.document) ?? "formato não definido"
+            
+            // String -> Date
+            let dtString = DateFormatter()
+            dtString.locale = Locale(identifier: "en_US_POSIX")
+            dtString.dateFormat = "yyyy-MM-dd"
+            let date = dtString.date(from: response.birthday) ?? Date()
+            
+            // Date -> String
+            let dtDate = DateFormatter()
+            dtDate.locale = Locale(identifier: "en_US_POSIX")
+            dtDate.dateFormat = "dd/MM/yyyy"
+            let birthdayFormatted = dtDate.string(from: date)
+            
+            data.append(("Identificador", "\(response.id)") )
+            data.append( ("Nome", response.name) )
+            data.append( ("E-mail", response.email) )
+            data.append( ("Documento", doc) )
+            data.append( ("Data de Nascimento", birthdayFormatted) )
+            tableView.reloadData()
             break
             
         case .error(let msg):
