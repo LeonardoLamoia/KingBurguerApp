@@ -50,6 +50,8 @@
 		1B5E84A82B2FE50C00E86394 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84A72B2FE50C00E86394 /* ProfileInteractor.swift */; };
 		1B5E84AA2B2FE5CB00E86394 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84A92B2FE5CB00E86394 /* ProfileViewModel.swift */; };
 		1B5E84AC2B2FE66C00E86394 /* ProfileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84AB2B2FE66C00E86394 /* ProfileState.swift */; };
+		1B5E84AE2B3B168600E86394 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84AD2B3B168600E86394 /* ViewControllers.swift */; };
+		1B5E84B02B3B17D200E86394 /* KeyboardHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E84AF2B3B17D200E86394 /* KeyboardHandle.swift */; };
 		1B6AFABF2ACDBF3800B8504D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */; };
 		1B6AFAC12ACDBF3800B8504D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */; };
 		1B6AFAC32ACDBF3800B8504D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAC22ACDBF3800B8504D /* ViewController.swift */; };
@@ -118,6 +120,8 @@
 		1B5E84A72B2FE50C00E86394 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		1B5E84A92B2FE5CB00E86394 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1B5E84AB2B2FE66C00E86394 /* ProfileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileState.swift; sourceTree = "<group>"; };
+		1B5E84AD2B3B168600E86394 /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
+		1B5E84AF2B3B17D200E86394 /* KeyboardHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandle.swift; sourceTree = "<group>"; };
 		1B6AFABB2ACDBF3800B8504D /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6AFABE2ACDBF3800B8504D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B6AFAC02ACDBF3800B8504D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 				1B2B72F02AFBC8A500A16D9B /* Mask.swift */,
 				1B93A4322AFD5673004AA245 /* WebServiceAPI.swift */,
 				1B5E84982B2F326300E86394 /* Doubles.swift */,
+				1B5E84AF2B3B17D200E86394 /* KeyboardHandle.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 			children = (
 				1B3617EC2AF16544006F4710 /* LoadingButton.swift */,
 				1B2B72EC2AF8131B00A16D9B /* TextField.swift */,
+				1B5E84AD2B3B168600E86394 /* ViewControllers.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -606,6 +612,7 @@
 				1B2B72ED2AF8131B00A16D9B /* TextField.swift in Sources */,
 				1B5E84902B2E296E00E86394 /* ProductDetailViewModel.swift in Sources */,
 				1B6AFAD52ACDCAF400B8504D /* SignInViewController.swift in Sources */,
+				1B5E84B02B3B17D200E86394 /* KeyboardHandle.swift in Sources */,
 				1B80E25F2B19744B000D3304 /* LocalDataSource.swift in Sources */,
 				1B5E84992B2F326300E86394 /* Doubles.swift in Sources */,
 				1B5E849D2B2F8CC200E86394 /* ProfileCoordinator.swift in Sources */,
@@ -631,6 +638,7 @@
 				1B5E849F2B2F91AC00E86394 /* ProfileCell.swift in Sources */,
 				1B80E25B2B18ADE9000D3304 /* SignInInteractor.swift in Sources */,
 				1B3CBF1F2B1E0F7D00DBE990 /* SplashRemoteDataSource.swift in Sources */,
+				1B5E84AE2B3B168600E86394 /* ViewControllers.swift in Sources */,
 				1B7DEAC32AF558C7004A5213 /* FeedViewController.swift in Sources */,
 				1B80E2612B1974AD000D3304 /* UserAuth.swift in Sources */,
 				1B7DEAC52AF558E8004A5213 /* ProfileViewController.swift in Sources */,

@@ -30,7 +30,6 @@ class SignInCoordinator {
         
         let navigationVC = UINavigationController(rootViewController: signInVC)
          
-        // = igual a rootViewController
         navigationController.pushViewController(signInVC, animated: true)
         
         window?.rootViewController = navigationController

@@ -153,11 +153,8 @@ class SignUpViewController: UIViewController {
         addElements()
         configConstraints()
         
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(onKeyBoardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(onKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
+        configureKeyboard(handle: keyboardHandle)
+        configureDismissKeyboard()
     }
     
     private func addElements() {
@@ -224,40 +221,22 @@ class SignUpViewController: UIViewController {
             
         ])
         
-        
     }
     
-    @objc func onKeyBoardNotification(_ notification: Notification) {
-        let visible = notification.name == UIResponder.keyboardWillShowNotification
-        
-        let keyboardFrame = visible ? UIResponder.keyboardFrameEndUserInfoKey : UIResponder.keyboardFrameBeginUserInfoKey
-        
-        if let keyboardSize = (notification.userInfo?[keyboardFrame] as? NSValue)?.cgRectValue {
-            onKeyboardChanged(visible, height: keyboardSize.height)
-        }
-    }
     
-    func onKeyboardChanged(_ visible: Bool, height: CGFloat) {
+    lazy var keyboardHandle = KeyboardHandle{ visible, height in
         if (!visible) {
-            scroll.contentInset = .zero
-            scroll.scrollIndicatorInsets = .zero
+            self.scroll.contentInset = .zero
+            self.scroll.scrollIndicatorInsets = .zero
         } else {
             let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: height, right: 0.0)
-            scroll.contentInset = contentInsets
-            scroll.scrollIndicatorInsets = contentInsets
+            self.scroll.contentInset = contentInsets
+            self.scroll.scrollIndicatorInsets = contentInsets
         }
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    
-    @objc func dismissKeyboard(_ view: UITapGestureRecognizer) {
-        self.view.endEditing(true)
     }
     
     
