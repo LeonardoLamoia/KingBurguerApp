@@ -95,7 +95,7 @@ class WebServiceAPI {
                 
                 if let error = error {
                     print(error)
-                    completion(Result.failure(.internalError, data))
+                    completion(Result.failure(.internalError, error.localizedDescription.data(using: .utf8)))
                     return
                 }
                 

@@ -298,19 +298,6 @@ extension SignUpViewController: TextFieldDelegate {
     }
 }
 
-//TODO: organizar o projeto separando a extension utilitaria
-
-extension UIView {
-    func findViewByTag(tag: Int) -> UIView? {
-        for subview in subviews {
-            if subview.tag == tag {
-                return subview
-            }
-        }
-        return nil
-    }
-}
-
 
 extension SignUpViewController: SignUpViewModelDelegate {
     func viewModelDidChanged(state: SignUpState) {
