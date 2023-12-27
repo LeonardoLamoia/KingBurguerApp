@@ -112,12 +112,7 @@ class SignUpViewController: UIViewController {
         ed.failure = {
             let invalidCount = ed.text.count != 10
             
-            let dt = DateFormatter()
-            dt.locale = Locale(identifier: "en_US_POSIX")
-            dt.dateFormat = "dd/MM/yyyy"
-            
-            // String -> Date
-            let date = dt.date(from: ed.text)
+            let date = ed.text.toDate()
             
             let invalidDate = date == nil
             

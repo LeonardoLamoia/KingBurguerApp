@@ -35,7 +35,7 @@ class ProductDetailRemoteDataSource {
                     completion(nil, response?.detail.message)
                     break
                 default:
-                    let response = try? JSONDecoder().decode(SignUpResponseError.self, from: data)
+                    let response = try? JSONDecoder().decode(ResponseError.self, from: data)
                     completion(nil, response?.detail)
                     break
                 }
@@ -68,7 +68,7 @@ class ProductDetailRemoteDataSource {
                     completion(nil, response?.detail.message)
                     break
                 default:
-                    let response = try? JSONDecoder().decode(SignUpResponseError.self, from: data)
+                    let response = try? JSONDecoder().decode(ResponseError.self, from: data)
                     completion(nil, response?.detail)
                     break
                 }
