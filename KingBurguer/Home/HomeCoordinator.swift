@@ -14,6 +14,8 @@ class HomeCoordinator {
     let navFeedVC = UINavigationController()
     let navProfileVC = UINavigationController()
     
+    private var signInCoordinator: SignInCoordinator?
+    
     init(window: UIWindow?) {
         self.window = window
     }
@@ -22,6 +24,7 @@ class HomeCoordinator {
         let homeVC = HomeViewController()
         
         let feedCoordinator = FeedCoordinator(navFeedVC)
+        feedCoordinator.parentCoordinator = self
         feedCoordinator.start()
         
         let profileCoordinator = ProfileCoordinator(navProfileVC)
@@ -30,5 +33,10 @@ class HomeCoordinator {
         homeVC.setViewControllers([navFeedVC, navProfileVC], animated: true)
         
         window?.rootViewController = homeVC
+    }
+    
+    func goToLogin() {
+        signInCoordinator = SignInCoordinator(window: window)
+        signInCoordinator?.start()
     }
 }

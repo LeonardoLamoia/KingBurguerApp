@@ -16,6 +16,10 @@ class LocalDataSource {
         UserDefaults.standard.setValue(value, forKey: "user_key")
     }
     
+    func deleteUserAuth() {
+        UserDefaults.standard.removeObject(forKey: "user_key")
+    }
+    
     func getUserAuth() -> UserAuth? {
         if let data = UserDefaults.standard.value(forKey: "user_key") as? Data {
             let user = try? PropertyListDecoder().decode(UserAuth.self, from: data)

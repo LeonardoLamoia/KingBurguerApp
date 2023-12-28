@@ -84,11 +84,14 @@ class FeedViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
         
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(systemName: "power"), style: .done, target: self, action: nil),
+            UIBarButtonItem(image: UIImage(systemName: "power"), style: .done, target: self, action: #selector(logoutDidTapped)),
             UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil)
         ]
     }
     
+    @objc func logoutDidTapped() {
+        viewModel?.logout()
+    }
     
 }
 

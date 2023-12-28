@@ -54,9 +54,14 @@ class FeedViewModel {
              }
          }
     }
-    
+     
     func goToProductDetail(id: Int) {
         coordinator?.goToProductDetail(id: id)
+    }
+    
+    func logout() {
+        interactor.logout()
+        coordinator?.goToLogin()
     }
     
 }

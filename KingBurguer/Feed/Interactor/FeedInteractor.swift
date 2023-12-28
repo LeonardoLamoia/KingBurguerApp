@@ -22,4 +22,7 @@ class FeedInteractor {
         return remote.fetchHighlight(completion: completion)
     }
     
+    func logout() {
+        local.deleteUserAuth()
+    }
 }
