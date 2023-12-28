@@ -60,16 +60,16 @@ class WebServiceAPI {
     
     // possibilidade de passar uma url dinamico (PURA)  exemplo: /products/1231
     func call(path: String, method: Method, accessToken: String? = nil, completion: @escaping (Result) -> Void) {
-        makeRequest(path: path, body: nil, method: method, accessToken: accessToken, completion: completion)
+        makeRequest(path: path, body: nil, method: method, completion: completion)
     }
     
     // possibilidade de passar uma url por ENDPOINT + body
     func call<R: Encodable>(path: Endpoint, body: R?, method: Method, accessToken: String? = nil, completion: @escaping (Result) -> Void) {
-        makeRequest(path: path.rawValue, body: body, method: method, accessToken: accessToken, completion: completion)
+        makeRequest(path: path.rawValue, body: body, method: method, completion: completion)
     }
     
     
-    func makeRequest(path: String, body: Encodable?, method: Method, accessToken: String? = nil, completion: @escaping (Result) -> Void) {
+    func makeRequest(path: String, body: Encodable?, method: Method, completion: @escaping (Result) -> Void) {
         
         
         do {
@@ -80,7 +80,7 @@ class WebServiceAPI {
             request.setValue("application/json", forHTTPHeaderField: "accept")
             request.setValue(WebServiceAPI.apiKey, forHTTPHeaderField: "x-secret-key")
             
-            if let accessToken = accessToken {
+            if let accessToken = LocalDataSource.shared.getUserAuth()?.accessToken {
                 request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             }
             if let body = body {
@@ -89,7 +89,6 @@ class WebServiceAPI {
             }
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                // assincrono
                 print("Response is \(String(describing: response))")
                 print("--------------------\n\n")
                 

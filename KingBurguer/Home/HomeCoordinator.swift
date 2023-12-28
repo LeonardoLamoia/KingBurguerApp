@@ -29,7 +29,6 @@ class HomeCoordinator {
         
         homeVC.setViewControllers([navFeedVC, navProfileVC], animated: true)
         
-        // aqui é onde acontece a trocar de navigation-controller
         window?.rootViewController = homeVC
     }
 }

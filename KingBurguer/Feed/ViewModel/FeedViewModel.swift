@@ -30,7 +30,7 @@ class FeedViewModel {
     init(interactor: FeedInteractor) {
         self.interactor = interactor
     }
-    // Informa: mudou o estado
+
     func fetch() {
        interactor.fetch() { response, error in
             DispatchQueue.main.async {
@@ -59,11 +59,4 @@ class FeedViewModel {
         coordinator?.goToProductDetail(id: id)
     }
     
-//    func goToSignUp() {
-//        coordinator?.signUp()
-//    }
-//    
-//    func goToHome() {
-//        coordinator?.home()
-//    }
 }

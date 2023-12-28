@@ -41,19 +41,9 @@ class SignUpViewModel {
     func send() {
         state = .loading
         
-        // String -> Date
-        let dtString = DateFormatter()
-        dtString.locale = Locale(identifier: "en_US_POSIX")
-        dtString.dateFormat = "dd/MM/yyyy"
-        let date = dtString.date(from: birthday) ?? Date()
-        
-        // Date -> String
-        let dtDate = DateFormatter()
-        dtDate.locale = Locale(identifier: "en_US_POSIX")
-        dtDate.dateFormat = "yyyy-MM-dd"
-        let birthdayFormatted = dtDate.string(from: date)
-        
+        let birthdayFormatted = birthday.toDate()?.toString() ?? ""
         let documentFormatted = document.digits
+        
         
         // MAIN-THREAD
         interactor.createUser(request: SignUpRequest(

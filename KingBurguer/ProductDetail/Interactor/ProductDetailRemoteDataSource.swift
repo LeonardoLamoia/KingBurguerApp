@@ -12,11 +12,11 @@ class ProductDetailRemoteDataSource {
     
     static let shared = ProductDetailRemoteDataSource()
     
-    func fetch(id: Int, accessToken: String, completion: @escaping (ProductResponse?, String?) -> Void) {
+    func fetch(id: Int, completion: @escaping (ProductResponse?, String?) -> Void) {
         
         let path = String(format: WebServiceAPI.Endpoint.productDetail.rawValue, id)
         
-        WebServiceAPI.shared.call(path: path, method: .get, accessToken: accessToken) { result in
+        WebServiceAPI.shared.call(path: path, method: .get) { result in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
@@ -45,11 +45,11 @@ class ProductDetailRemoteDataSource {
     }
     
     
-    func createCoupon(id: Int, accessToken: String, completion: @escaping (CouponResponse?, String?) -> Void) {
+    func createCoupon(id: Int, completion: @escaping (CouponResponse?, String?) -> Void) {
         
         let path = String(format: WebServiceAPI.Endpoint.coupon.rawValue, id)
         
-        WebServiceAPI.shared.call(path: path, method: .post, accessToken: accessToken) { result in
+        WebServiceAPI.shared.call(path: path, method: .post) { result in
             switch result {
             case .success(let data):
                 guard let data = data else { return }

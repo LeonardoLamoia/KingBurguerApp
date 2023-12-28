@@ -19,7 +19,6 @@ class HighlightView: UIView {
         let iv = UIImageView()
         
         iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(named: "highlight")
         iv.clipsToBounds = true
         
         return iv

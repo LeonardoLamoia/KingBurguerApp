@@ -23,8 +23,6 @@ class SignInRemoteDataSource {
                 break
                 
             case .failure(let error, let data):
-                print("ERROR: \(error)")
-                
                 guard let data = data else { return }
                 
                 switch error {

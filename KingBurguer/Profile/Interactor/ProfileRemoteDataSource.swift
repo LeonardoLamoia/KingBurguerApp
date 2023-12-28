@@ -13,9 +13,9 @@ class ProfileRemoteDataSource {
     
     static let shared = ProfileRemoteDataSource()
     
-    func fetch(accessToken: String, completion: @escaping (UserResponse?, String?) -> Void) {
+    func fetch(completion: @escaping (UserResponse?, String?) -> Void) {
         
-        WebServiceAPI.shared.call(path: .me, body: Optional<FeedRequest>.none, method: .get, accessToken: accessToken) { result in
+        WebServiceAPI.shared.call(path: .me, body: Optional<FeedRequest>.none, method: .get) { result in
             switch result {
             case .success(let data):
                 guard let data = data else { return }

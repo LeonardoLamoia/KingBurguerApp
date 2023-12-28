@@ -12,8 +12,8 @@ class FeedRemoteDataSource {
     
     static let shared = FeedRemoteDataSource()
     
-    func fetch(accessToken: String, completion: @escaping (FeedResponse?, String?) -> Void) {
-        WebServiceAPI.shared.call(path: .feed, body: Optional<FeedRequest>.none, method: .get, accessToken: accessToken) { result in
+    func fetch(completion: @escaping (FeedResponse?, String?) -> Void) {
+        WebServiceAPI.shared.call(path: .feed, body: Optional<FeedRequest>.none, method: .get) { result in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
@@ -22,8 +22,7 @@ class FeedRemoteDataSource {
                 break
                 
             case .failure(let error, let data):
-                print("ERROR: \(error)")
-                
+
                 guard let data = data else { return }
                 
                 switch error {
@@ -41,8 +40,8 @@ class FeedRemoteDataSource {
         }
     }
     
-    func fetchHighlight(accessToken: String, completion: @escaping (HighlightResponse?, String?) -> Void) {
-        WebServiceAPI.shared.call(path: .highlight, body: Optional<FeedRequest>.none, method: .get, accessToken: accessToken) { result in
+    func fetchHighlight(completion: @escaping (HighlightResponse?, String?) -> Void) {
+        WebServiceAPI.shared.call(path: .highlight, body: Optional<FeedRequest>.none, method: .get) { result in
             switch result {
             case .success(let data):
                 guard let data = data else { return }
@@ -51,7 +50,6 @@ class FeedRemoteDataSource {
                 break
                 
             case .failure(let error, let data):
-                print("ERROR: \(error)")
                 
                 guard let data = data else { return }
                 
@@ -60,11 +58,18 @@ class FeedRemoteDataSource {
                     let response = try? JSONDecoder().decode(ResponseUnauthorized.self, from: data)
                     completion(nil, response?.detail.message)
                     break
+                    
+                case .internalError:
+                    completion(nil, String(data: data, encoding: .utf8))
+                    break
+                    
+                    
                 default:
                     let response = try? JSONDecoder().decode(ResponseError.self, from: data)
                     completion(nil, response?.detail)
                     break
                 }
+                
                 break
             }
         }

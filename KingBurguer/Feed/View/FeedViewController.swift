@@ -84,14 +84,11 @@ class FeedViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
         
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(systemName: "power"), style: .done, target: self, action: #selector(testDidTap)),
+            UIBarButtonItem(image: UIImage(systemName: "power"), style: .done, target: self, action: nil),
             UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil)
         ]
     }
     
-    @objc func testDidTap(_ sender: UIBarButtonItem) {
-        print("clicou")
-    }
     
 }
 
@@ -132,7 +129,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as! FeedTableViewCell
         
-//        cell.products.removeAll()
+
         cell.products.append(contentsOf: sections[indexPath.section].products)
         cell.delegate = self
         
@@ -169,6 +166,12 @@ extension FeedViewController: FeedViewModelDelegate, FeedCollectionViewDelegate,
             break
             
         case .error(let msg):
+            let alert = UIAlertController(title: "KingBurguer", message: msg, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            
+            self.present(alert, animated: true)
+            
             progress.stopAnimating()
             self.homeFeedTable.reloadData()
             break
