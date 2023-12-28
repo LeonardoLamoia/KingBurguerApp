@@ -29,14 +29,15 @@ class HighlightView: UIView {
     var delegate: HighlightViewDelegate?
     
     
-    private let moreButton: UIButton = {
-        let btn = UIButton()
+    private lazy var moreButton: UIButton = {
+        let btn = UIButton(configuration: .plain())
+        btn.setTitleColor(.white, for: .normal)
         btn.setTitle("Resgatar Cupom", for: .normal)
         btn.layer.borderColor = UIColor.white.cgColor
         btn.layer.borderWidth = 1
         btn.layer.cornerRadius = 5
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        btn.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         btn.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return btn
     }()

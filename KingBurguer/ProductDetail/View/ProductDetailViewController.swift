@@ -76,7 +76,7 @@ class ProductDetailViewController: UIViewController {
         btn.layer.borderWidth = 1
         btn.backgroundColor = .red
         btn.layer.cornerRadius = 5
-        btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        btn.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(couponTapped), for: .touchUpInside)
         return btn
@@ -85,7 +85,7 @@ class ProductDetailViewController: UIViewController {
     let descLbl: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .left
-        lb.textColor = .darkText
+        lb.textColor = .systemGray
         lb.numberOfLines = 0
         lb.sizeToFit()
         lb.font = .systemFont(ofSize: 16.0)

@@ -28,7 +28,7 @@ class SignInCoordinator {
         let signInVC = SignInViewController()
         signInVC.viewModel = viewModel
         
-        let navigationVC = UINavigationController(rootViewController: signInVC)
+        _ = UINavigationController(rootViewController: signInVC)
          
         navigationController.pushViewController(signInVC, animated: true)
         
