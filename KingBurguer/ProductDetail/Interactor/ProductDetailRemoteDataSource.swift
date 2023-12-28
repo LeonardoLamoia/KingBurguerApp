@@ -67,6 +67,11 @@ class ProductDetailRemoteDataSource {
                     let response = try? JSONDecoder().decode(ResponseUnauthorized.self, from: data)
                     completion(nil, response?.detail.message)
                     break
+                    
+                case .internalError:
+                    completion(nil, String(data: data, encoding: .utf8))
+                    break
+                    
                 default:
                     let response = try? JSONDecoder().decode(ResponseError.self, from: data)
                     completion(nil, response?.detail)

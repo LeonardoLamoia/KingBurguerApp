@@ -32,8 +32,5 @@ class ProductDetailCoordinator {
         
         navigationController.pushViewController(vc, animated: true)
     }
-    
-//    func login() {
-//        navigationController.popViewController(animated: true)
-//    }
+
 }

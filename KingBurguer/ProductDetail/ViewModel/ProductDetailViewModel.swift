@@ -58,8 +58,5 @@ class ProductDetailViewModel {
         }
     }
     
-//    func goToProductDetail(id: Int) {
-//        coordinator?.goToProductDetail(id: id)
-//    }
 }
 

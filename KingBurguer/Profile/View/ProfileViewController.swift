@@ -78,27 +78,19 @@ extension ProfileViewController: ProfileViewModelDelegate {
             
             let doc = Mask(mask: "###.###.###-##").process(value: response.document) ?? "formato não definido"
             
-            // String -> Date
-            let dtString = DateFormatter()
-            dtString.locale = Locale(identifier: "en_US_POSIX")
-            dtString.dateFormat = "yyyy-MM-dd"
-            let date = dtString.date(from: response.birthday) ?? Date()
             
-            // Date -> String
-            let dtDate = DateFormatter()
-            dtDate.locale = Locale(identifier: "en_US_POSIX")
-            dtDate.dateFormat = "dd/MM/yyyy"
-            let birthdayFormatted = dtDate.string(from: date)
+            let birthdayFormatted = response.birthday.toDate(dateFormat: "yyyy-MM-dd")?.toString(dateFormat: "dd/MM/yyyy")
             
             data.append(("Identificador", "\(response.id)") )
             data.append( ("Nome", response.name) )
             data.append( ("E-mail", response.email) )
             data.append( ("Documento", doc) )
-            data.append( ("Data de Nascimento", birthdayFormatted) )
+            data.append( ("Data de Nascimento", birthdayFormatted ?? "formato não especificado") )
             tableView.reloadData()
             break
             
         case .error(let msg):
+            alert(message: msg)
             break
         }
     }

@@ -26,7 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let userAuth = local.getUserAuth() {
             if Date().timeIntervalSince1970 > Double(userAuth.expiresSeconds) {
                 print("EXPIROU!!!")
-                // fazer o refresh aqui...
                 
                 interactor.login(request: SplashRequest(refreshToken: userAuth.refreshToken)) { response, error in
                     DispatchQueue.main.async {

@@ -61,7 +61,6 @@
 		1B6AFAD52ACDCAF400B8504D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6AFAD42ACDCAF400B8504D /* SignInViewController.swift */; };
 		1B7DEAC32AF558C7004A5213 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEAC22AF558C7004A5213 /* FeedViewController.swift */; };
 		1B7DEAC52AF558E8004A5213 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEAC42AF558E8004A5213 /* ProfileViewController.swift */; };
-		1B7DEAC72AF558FD004A5213 /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEAC62AF558FD004A5213 /* CouponViewController.swift */; };
 		1B7DEAC92AF57213004A5213 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEAC82AF57213004A5213 /* FeedTableViewCell.swift */; };
 		1B7DEACB2AF586D7004A5213 /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DEACA2AF586D7004A5213 /* HighlightView.swift */; };
 		1B80E2562B180D87000D3304 /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B80E2552B180D87000D3304 /* SignUpInteractor.swift */; };
@@ -134,7 +133,6 @@
 		1B6AFAD42ACDCAF400B8504D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1B7DEAC22AF558C7004A5213 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		1B7DEAC42AF558E8004A5213 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		1B7DEAC62AF558FD004A5213 /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
 		1B7DEAC82AF57213004A5213 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		1B7DEACA2AF586D7004A5213 /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
 		1B80E2552B180D87000D3304 /* SignUpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
@@ -358,7 +356,6 @@
 			children = (
 				1B3CBF382B29EE6200DBE990 /* ProductDetail */,
 				1B3CBF192B1E0E2400DBE990 /* Splash */,
-				1B7DEAC02AF55893004A5213 /* Coupon */,
 				1B7DEABE2AF5587D004A5213 /* Profile */,
 				1B7DEABC2AF55863004A5213 /* Feed */,
 				1B3617EA2AF16520006F4710 /* Common */,
@@ -435,22 +432,6 @@
 			children = (
 				1B7DEAC42AF558E8004A5213 /* ProfileViewController.swift */,
 				1B5E849E2B2F91AC00E86394 /* ProfileCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1B7DEAC02AF55893004A5213 /* Coupon */ = {
-			isa = PBXGroup;
-			children = (
-				1B7DEAC12AF558A0004A5213 /* View */,
-			);
-			path = Coupon;
-			sourceTree = "<group>";
-		};
-		1B7DEAC12AF558A0004A5213 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1B7DEAC62AF558FD004A5213 /* CouponViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -614,7 +595,6 @@
 				1B3CBF222B22BD1C00DBE990 /* FeedViewModel.swift in Sources */,
 				1B5E84AA2B2FE5CB00E86394 /* ProfileViewModel.swift in Sources */,
 				1B7DEAC92AF57213004A5213 /* FeedTableViewCell.swift in Sources */,
-				1B7DEAC72AF558FD004A5213 /* CouponViewController.swift in Sources */,
 				1B199B872B10300100E47397 /* ResponseUnauthorized.swift in Sources */,
 				1B3617DC2AED7C0F006F4710 /* SignUpViewModel.swift in Sources */,
 				1B2B72EB2AF80EB500A16D9B /* FeedCollectionViewCell.swift in Sources */,

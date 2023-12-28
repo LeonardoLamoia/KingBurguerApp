@@ -17,7 +17,7 @@ struct SignUpRequest: Encodable {
     
     
     enum CodingKeys: String, CodingKey {
-        case name = "name" // Exemplo de alteração de nome "chave"
+        case name 
         case email
         case password
         case document

@@ -21,9 +21,7 @@ class SplashRemoteDataSource {
                 break
                 
             case .failure(_, _):
-                
                completion(nil, true)
-                
                 break
             }
         }

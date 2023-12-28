@@ -38,7 +38,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
         lb.textAlignment = .center
         lb.textColor = .red
         lb.font = .systemFont(ofSize: 12)
-        lb.text = "Combo KB Kiss"
         return lb
     }()
     
@@ -52,8 +51,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
         lb.layer.masksToBounds = true
         lb.layer.borderColor = UIColor.lightText.cgColor
         lb.layer.cornerRadius = 5
-        
-        lb.text = "R$ 29,90"
         
         return lb
     }()
