@@ -219,7 +219,6 @@ extension SignInViewController: TextFieldDelegate {
 }
 
 
-
 // 3. Observers
 extension SignInViewController: SignInViewModelDelegate {
     // novos dados chegou
@@ -237,10 +236,7 @@ extension SignInViewController: SignInViewModelDelegate {
             break
         case .error(let msg):
             self.send.startLoading(false)
-            let alert = UIAlertController(title: "KingBurguer", message: msg, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true)
-            
+            alert(message: msg)
             break
         }
     }

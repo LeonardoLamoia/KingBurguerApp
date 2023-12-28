@@ -25,4 +25,14 @@ extension UIViewController {
     @objc func dismissKeyboard(_ view: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
+    
+    func alert(message: String, onClick: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: "KingBurguer", message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            onClick?()
+        }))
+        
+        self.present(alert, animated: true)
+    }
 }

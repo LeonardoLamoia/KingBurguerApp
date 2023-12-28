@@ -221,13 +221,12 @@ extension ProductDetailViewController: ProductDetailViewModelDelegate {
         case .successCoupon(let response):
             progress.stopAnimating()
             
-            let alert = UIAlertController(title: "KingBurguer", message: "Cupom gerado: \(response.coupon)", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-            }))
-            self.present(alert, animated: true)
+            alert(message: "Cupom gerado: \(response.coupon)")
+            break
             
         case .error(let msg):
             progress.stopAnimating()
+            alert(message: msg)
             break
         }
     }

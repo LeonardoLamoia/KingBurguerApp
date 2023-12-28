@@ -166,12 +166,7 @@ extension FeedViewController: FeedViewModelDelegate, FeedCollectionViewDelegate,
             break
             
         case .error(let msg):
-            let alert = UIAlertController(title: "KingBurguer", message: msg, preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            
-            self.present(alert, animated: true)
-            
+            alert(message: msg)
             progress.stopAnimating()
             self.homeFeedTable.reloadData()
             break
